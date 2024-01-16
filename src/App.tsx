@@ -1,9 +1,13 @@
+import { BrowserRouter } from "react-router-dom"
+import { Home } from "./shared"
 
 function App() {
 
   return (
     <>
-      PROVA CODICE ...
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
     </>
   )
 }
