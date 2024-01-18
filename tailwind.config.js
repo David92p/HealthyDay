@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "greenbox": "#1F2B21", 
+        "mygreen": "#1F2B21", 
         "mypink": "#FFBBDC"
       }
     },
