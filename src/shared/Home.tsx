@@ -22,7 +22,7 @@ const Home:React.FC = () => {
         <motion.h1 initial={{x:-1000}} animate={{x:0}} transition={{delay: 0.5, duration: 2}} className='text-mypink text-4xl sm:text-6xl 2xl:text-8xl font-bold tracking-wider ml-4 sm:ml-10 2xl:mx-16 mb-8 absolute bottom-0'>La sana bontà che <br /> puoi avere.</motion.h1>
       </div>
       {/* introduzione */}
-      <div className='flex flex-col sm:flex-row h-auto sm:h-[600px] w-full bg-mygreen pt-8 sm:pt-16 2xl:pt-24 px-4 sm:px-10 2xl:px-16'>
+      <div className='flex flex-col sm:flex-row h-auto sm:h-[700px] 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-28 2xl:py-40 px-4 sm:px-10 2xl:px-16'>
         <span className='sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
         <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-6 mb-2 sm:mt-0 sm:ml-5'>
           Ci siamo appena trasferiti nel quartiere, ma è come se fossimo qui da sempre! Ci avete accolto come vecchi amici, passando con sorrisi pronti e appetito desideroso.
@@ -64,15 +64,15 @@ const Home:React.FC = () => {
         </div>
       </div>
       {/* spazio about e collegamenti  */}
-      <div className='flex flex-col sm:flex-row h-auto 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-16 2xl:py-24 px-4 sm:px-10 2xl:px-16 tracking-wider'>
-        <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl'>Colorati di Sano</span>
-        <div className='flex flex-col text-slate-100 mt-6 sm:mt-0'>
+      <div className='flex flex-col sm:flex-row h-auto sm:h-[700px] 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-36 px-4 sm:px-10 2xl:px-16'>
+        <span className='sm:w-2/5 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Colorati di Sano</span>
+        <div className='sm:w-3/5 flex flex-col text-slate-100 mt-6 sm:mt-0'>
           <span className='text-2xl sm:text-4xl 2xl:text-6xl'>Consulta</span>
-          <span className='text-lg sm:text-2xl'>Cerca le ricetta che soddisfino il tuo palato!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4'>Cerca le ricetta che soddisfino il tuo palato!</span>
           <span className='text-2xl sm:text-4xl 2xl:text-6xl mt-5'>Prepara</span>
-          <span className='text-lg sm:text-2xl'>Procurati gli ingredienti consigliati e accendi i fornelli, il tuo corpo aspetta di colorarsi di sano!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4'>Procurati gli ingredienti consigliati e accendi i fornelli, il tuo corpo aspetta di colorarsi di sano!</span>
           <span className='text-2xl sm:text-4xl 2xl:text-6xl mt-5'>Gusta</span>
-          <span className='text-lg sm:text-2xl'>Rilassati e gusta il tuo piatto, che sia un break veloce o un pasto principale. Gusta la Salute!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4'>Rilassati e gusta il tuo piatto, che sia un break veloce o un pasto principale. Gusta la Salute!</span>
         </div>
       </div>
       {/* Saluti  */}
@@ -87,9 +87,9 @@ const Home:React.FC = () => {
           <div className='w-1/3 flex flex-col justify-start text-cente text-mygreenr'>
             <span className='text-xl sm:text-4xl 2xl:text-6xl text-center text-mygreen'>Seguici</span>
             <div className='flex flex-col sm:flex-row gap-4 w-full justify-center mt-2 pl-2 mb-5'>
-              <FontAwesomeIcon icon={faLinkedin} className='fa-2x'/>
-              <FontAwesomeIcon icon={faInstagram} className='fa-2x'/>
-              <FontAwesomeIcon icon={faGithub} className='fa-2x'/>
+              <FontAwesomeIcon icon={faLinkedin} className='fa-2x cursor-pointer'/>
+              <FontAwesomeIcon icon={faInstagram} className='fa-2x cursor-pointer'/>
+              <FontAwesomeIcon icon={faGithub} className='fa-2x cursor-pointer'/>
             </div>
           </div>
           <div className='w-1/3 flex flex-col justify-start text-center text-mygreen text-xl'>
@@ -100,11 +100,11 @@ const Home:React.FC = () => {
             USA 12345
           </div>
           <div className='w-1/3 flex flex-col justify-start text-center text-mygreen'>
-            <span className='text-xl sm:text-4xl 2xl:text-6xl text-mygreen'>Contattaci</span>
-            <FontAwesomeIcon icon={faEnvelope} className='fa-2x'/>
+            <span className='text-xl sm:text-4xl 2xl:text-5xl text-mygreen'>Contattaci</span>
+            <FontAwesomeIcon icon={faEnvelope} className='fa-2x cursor-pointer' />
           </div>
         </div>
-        <div className='flex items-end justify-center pt-4 w-full h-full sm:text-lg'>© 2024 | Davide Panetta</div>
+        <div className='flex items-end justify-center pt-4 2xl:pt-10 w-full h-full sm:text-lg'>© 2024 | Davide Panetta</div>
       </div>
    </div> 
   )
