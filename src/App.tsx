@@ -1,12 +1,13 @@
 import { BrowserRouter } from "react-router-dom"
-import { Home } from "./shared"
+import { Navbar, Router } from "./shared"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Home />
+        <Navbar/>
+        <Router />
       </BrowserRouter>
     </>
   )
