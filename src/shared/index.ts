@@ -1,4 +1,4 @@
-import { Home } from "./Home";
-import { RoutesHome } from "./RoutesHome";
+import Navbar from "./Navbar";
+import Router from "./Router";
 
-export { Home, RoutesHome }
+export { Navbar, Router }
