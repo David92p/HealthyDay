@@ -17,8 +17,8 @@ const Home:React.FC = () => {
   return (
    <div className='flex flex-col cursor-default' style={{fontFamily: "Salsa"}}>
       {/* introduzione */}
-      <div className='flex flex-col sm:flex-row h-auto sm:h-[700px] 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-28 2xl:py-40 px-4 sm:px-10 2xl:px-16'>
-        <span className='sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
+      <div className='flex flex-col sm:flex-row h-auto 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-14 2xl:py-40 px-4 sm:px-10 2xl:px-16'>
+        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
         <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-6 mb-2 sm:mt-0 sm:ml-5'>
           Ci siamo appena trasferiti nel quartiere, ma è come se fossimo qui da sempre! Ci avete accolto come vecchi amici, passando con sorrisi pronti e appetito desideroso.
           <br />Ecco perché promettiamo di prenderci cura della tua salute tramite prodotti sani e serviti con sorrisi calorosi.<br /> Siamo una famiglia adesso. Ed è così che cuciniamo per chi amiamo.
@@ -26,11 +26,11 @@ const Home:React.FC = () => {
         </span>
       </div>
       {/* spazio ingredienti */}
-      <div className='flex flex-col sm:flex-row-reverse h-auto 2xl:h-[700px] w-full bg-slate-100 pt-8 sm:pt-16 2xl:pt-24 px-4 sm:px-10 2xl:px-16'>
-        <div className='sm:w-3/5 2xl:w-2/3'>
-          <img src={home1} alt="home2" className='brightness-75 2xl:brightness-50 object-cover h-full w-full'/>
+      <div className='flex flex-col sm:flex-row-reverse h-auto w-full bg-slate-100 pt-8 sm:pt-16 2xl:pt-24 px-4 sm:px-10 2xl:px-16'>
+        <div className='sm:w-3/5'>
+          <img src={home1} alt="home2" className='brightness-75 2xl:brightness-50 object-cover h-full 2xl:h-[700px] w-full'/>
         </div>
-        <div className='flex flex-col sm:w-2/5 2xl:w-1/3 text-mygreen mt-6 sm:mr-5'>
+        <div className='flex flex-col sm:w-4/5 2xl:w-2/5 text-mygreen mt-6 sm:mt-0 sm:mr-5'>
           <span className='text-3xl sm:text-5xl 2xl:text-7xl'>Inizia da quì</span>
           <span className='text-xl sm:text-3xl mt-4'>Lavoriamo tutti insieme per portare sulla tua tavola il gusto della salute.<br/>Prova le nostre specilità iniziando da quì.</span>
           <br />
@@ -59,8 +59,8 @@ const Home:React.FC = () => {
         </div>
       </div>
       {/* spazio about e collegamenti  */}
-      <div className='flex flex-col sm:flex-row h-auto sm:h-[700px] 2xl:h-[600px] w-full bg-mygreen py-8 sm:py-36 px-4 sm:px-10 2xl:px-16'>
-        <span className='sm:w-2/5 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Colorati di Sano</span>
+      <div className='flex flex-col sm:flex-row h-auto 2xl:h-[550px] w-full bg-mygreen py-8 sm:py-14 2xl:py-auto px-4 sm:px-10 2xl:px-16'>
+        <span className='sm:w-2/5 align-text-top text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Colorati di Sano</span>
         <div className='sm:w-3/5 flex flex-col text-slate-100 mt-6 sm:mt-0'>
           <span className='text-2xl sm:text-4xl 2xl:text-6xl'>Consulta</span>
           <span className='text-lg sm:text-2xl sm:mt-4'>Cerca le ricetta che soddisfino il tuo palato!</span>
@@ -96,10 +96,9 @@ const Home:React.FC = () => {
           </div>
           <div className='w-1/3 flex flex-col justify-start text-center text-mygreen'>
             <span className='text-xl sm:text-4xl 2xl:text-5xl text-mygreen'>Contattaci</span>
-            <FontAwesomeIcon icon={faEnvelope} className='fa-2x cursor-pointer' />
+            <FontAwesomeIcon icon={faEnvelope} className='fa-2x cursor-pointer' onClick={() => navigate("/contattaci")}/>
           </div>
         </div>
-        <div className='flex items-end justify-center pt-4 2xl:pt-10 w-full h-full sm:text-lg'>© 2024 | Davide Panetta</div>
       </div>
    </div> 
   )
