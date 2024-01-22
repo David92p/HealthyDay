@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { Home, Contact, Recipes } from "../components/"
+import { Home, Contact, Recipes, About } from "../components/"
 
 const Router:React.FC = () => {
   return useRoutes([
@@ -8,17 +8,21 @@ const Router:React.FC = () => {
         element: <Home />
     }, 
     {
-        path: "/ricettario",
+        path: "ricettario",
         element: <Recipes/>
     },
     {
-        path: "/contattaci",
+        path: "contattaci",
         element: <Contact/>
     },
     {
-        path: "*",
-        element: <h1>ERRORE ROUTE NON IMPOSTATA -  DA CREARE 404!</h1>,
-      },
+      path: "about",
+      element: <About/>
+    },
+    {
+      path: "*",
+      element: <h1>ERRORE ROUTE NON IMPOSTATA -  DA CREARE 404!</h1>,
+    },
   ])
 }
 
