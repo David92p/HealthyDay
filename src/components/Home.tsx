@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 
 const Home:React.FC = () => {
@@ -44,19 +45,30 @@ const Home:React.FC = () => {
         </div>
       </div>
       {/* spazio pasti 3 card  */}
-      <div className='flex flex-col sm:flex-row sm:h-[700px] w-full bg-slate-100 pt-8 sm:py-16 px-4 sm:px-10 2xl:px-16 sm:gap-4 text-xl sm:text-3xl text-mygreen'>
-        <div className='flex flex-col sm:w-1/3 cursor-pointer  '>
+      <div className='flex flex-col sm:flex-row 2xl:justify-around sm:h-[700px] w-full bg-slate-100 pt-8 sm:py-16 px-4 sm:px-10 2xl:px-16 sm:gap-4 text-xl sm:text-3xl text-mygreen'>
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer'
+        >
           <img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home2} />
           <button className='bg-mypink h-12'>Colazione</button>
-        </div>
-        <div className='flex flex-col sm:w-1/3 mt-4 sm:mt-0 cursor-pointer'>
+        </motion.div>
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer mt-4 sm:mt-0'
+        >
           <img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home3} />
           <button className='bg-mypink h-12'>Pranzo</button>
-        </div>
-        <div className='flex flex-col sm:w-1/3 my-4 sm:my-0 cursor-pointer'>
+        </motion.div>
+        <motion.div 
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer my-4 sm:mt-0'>
           <img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home4} />
           <button className='bg-mypink h-12'>Cena</button>
-        </div>
+        </motion.div>
       </div>
       {/* spazio about e collegamenti  */}
       <div className='flex flex-col sm:flex-row h-auto 2xl:h-[550px] w-full bg-mygreen py-8 sm:py-14 2xl:py-auto px-4 sm:px-10 2xl:px-16'>
