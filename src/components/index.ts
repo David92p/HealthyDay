@@ -1,9 +1,14 @@
-import Home from "./Home"
-import Recipes from "./Recipes";
-import Contact from "./Contact";
-import About from "./About"
-import Footer from "./Footer";
-import Research from "./Research";
-import RecipeCard from "./RecipeCard";
+import  { Home }  from "./home/"
+import { Ingredients } from "./ingredients"
+import { Recipes, Breakfast, Lunch, Dinner } from "./recipes"
+import { Details } from "./details"
+import { Planner } from "./planner"
+import { Contact } from "./contact"
+import { About } from "./about"
+import { Footer } from "./footer"
 
-export { Home, Recipes, Contact, About, Footer, Research, RecipeCard }
+import type { CardType } from "./global"
+
+export { Home, Ingredients, Recipes, Breakfast, Lunch, Dinner, Details, Planner, Contact, About, Footer }
+
+export type { CardType }
