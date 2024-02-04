@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { getRecipeDetails } from '../async';
+import { getRecipeDetails, getSimilarRecipe } from '../async';
 import Parser from 'html-react-parser';
 import { Loading, Error } from '../global';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { RecipeToolType, ToolLabel } from '.';
+import  startPrepare  from "../../assets/details/detail.jpg"
 
 // export type RawMaterialRecipeType = {
 // 	id: number
@@ -35,7 +36,6 @@ export type DetailsType = {
 const Details:React.FC = () => {
 
 	const { id } = useParams<{ id: string }>();
-	//console.log(id)
 
 	const [details, setDetails] = useState<DetailsType | null>(null)
 	const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -44,14 +44,22 @@ const Details:React.FC = () => {
 
 	
   useEffect(() => {
-	setIsLoading(true)
-    id && getRecipeDetails(import.meta.env.VITE_APP_API_KEY, +id)
-    .then((res:DetailsType | null) => {
-			setIsLoading(false)
-      res ? setDetails(res) : setIsError(true)
-      setIsLoading(false)
-    })
+		setIsLoading(true)
+			id && getRecipeDetails(import.meta.env.VITE_APP_API_KEY, +id)
+			.then((res:DetailsType | null) => {
+				setIsLoading(false)
+				res ? setDetails(res) : setIsError(true)
+				setIsLoading(false)
+		})
+
+		
   }, [id])
+
+	useEffect(() => {
+		getSimilarRecipe(import.meta.env.VITE_APP_API_KEY, 654534)
+	}, [])
+
+	console.log(details)
 
 	return (
 		<div className='flex flex-col w-full h-auto bg-mygreen text-slate-100'>
@@ -63,7 +71,8 @@ const Details:React.FC = () => {
 						? <Loading /> 
 						: (
 							<>
-								<div className='flex flex-col p-4 border-2 border-red-500'>
+								<div className='flex flex-col p-4 2xl:p-16 border-2 border-red-500'>
+									{/* Foto del piatto, titolo ed etichette assegnate */}
 									<div className='flex flex-col w-full sm:flex-row border-4 border-slate-500'>
 										<img src={details?.image} alt={details?.title} className='sm:w-1/2 border-2 border-green-500'/>
 										<div className='flex flex-col sm:justify-around sm:w-1/2 border-8 border-yellow-300'>
@@ -77,6 +86,7 @@ const Details:React.FC = () => {
 											</div>
 										</div>
 									</div>
+									{/* descrizione del piatto */}
 									<div className='w-full h-auto pt-2 border-4 border-red-500'>
 										{
 											moreDescription ? (
@@ -96,9 +106,10 @@ const Details:React.FC = () => {
 												}
 										</div>
 									</div>
-									<div className='flex flex-col w-full border-2 border-yellow-400'>
+									{/* ingredienti */}
+									<div className='flex flex-col w-full items-center border-2 border-yellow-400'>
 										<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-2 border-2 border-blue-500'>Ingredients for {details?.servings} people</p>
-										<div className='flex w-full gap-4 flex-wrap justify-around  border-8 border-slate-500'>
+										<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around  border-8 border-slate-500'>
 												{ details && details.ingredients.map((ingredient:RecipeToolType) => {
 													return (
 														<ToolLabel {...ingredient} key={ingredient.id}/>
@@ -106,11 +117,12 @@ const Details:React.FC = () => {
 												}) }
 										</div>
 									</div>
+									{/* strumenti di lavoro */}
 									{
 										details && details.equipments.length > 0 ? (
-											<div className='flex flex-col w-full border-2 border-yellow-400'>
+											<div className='flex flex-col w-full items-center border-2 border-yellow-400'>
 												<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-2 border-2 border-blue-500'>Equipments</p>
-												<div className='flex w-full gap-4 flex-wrap justify-around  border-8 border-slate-500'>
+												<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around  border-8 border-slate-500'>
 														{ details && details.equipments.map((equipment:RecipeToolType) => {
 															return (
 																<ToolLabel {...equipment} key={equipment.id}/>
@@ -120,7 +132,11 @@ const Details:React.FC = () => {
 											</div> 
 										) : null
 									}
-									
+									<div className='flex flex-col w-full border-8 border-red-600'>
+										<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-2 border-2 border-blue-500'>Let's begin!</p>
+										{ details?.description && <div className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider' dangerouslySetInnerHTML={{__html: details?.instructions}}></div> }
+										<img src={startPrepare} alt="Let's begin!" className='brightness-75 2xl:brightness-50 object-cover h-full w-full mt-4'/>
+									</div>
 								</div>
 							</>
 						))
