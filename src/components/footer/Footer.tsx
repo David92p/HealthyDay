@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 const Footer:React.FC = () => {
   const navigate = useNavigate()
   return (
-    <div className='flex flex-col bg-mypink w-full h-auto  text-mygreen pt-6 sm:pt-14 2xl:pt-16' style={{fontFamily: "Salsa"}}>
+    <div className='flex flex-col bg-mypink w-full h-auto  text-mygreen pt-4 sm:pt-14 2xl:pt-16' style={{fontFamily: "Salsa"}}>
         <span className='text-center text-3xl sm:text-5xl 2xl:text-7xl tracking-wider font-bold'>Buongiorno<br/>Salute</span>
         <div className='flex w-full mt-8'>
-          <div className='w-1/3 flex flex-col justify-start text-cente text-mygreenr'>
+          <div className='w-1/3 flex flex-col justify-start text-center text-mygreen'>
             <span className='text-xl sm:text-4xl 2xl:text-6xl text-center text-mygreen'>Seguici</span>
             <div className='flex flex-col sm:flex-row gap-4 w-full justify-center mt-2 pl-2 mb-5'>
               <FontAwesomeIcon icon={faLinkedin} className='fa-2x cursor-pointer'/>

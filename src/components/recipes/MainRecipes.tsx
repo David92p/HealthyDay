@@ -7,7 +7,7 @@ const MainRecipes:React.FC = () => {
 	const navigate = useNavigate()
   return (
 		<>
-			<div className='flex flex-col sm:flex-row h-auto w-full bg-mygreen py-8 sm:py-14 px-4 sm:px-10 2xl:px-16'>
+			<div className='flex flex-col sm:flex-row h-auto w-full bg-mygreen pt-4 sm:py-14 px-4 sm:px-6 2xl:px-10'>
 				<div className='sm:w-2/5'>
 					<p className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl tracking-wider'>Inizia da quì a costruire la tua salute!</p>
 					<p className='text-slate-100 tracking-wider text-xl sm:text-3xl mt-4'>
@@ -15,7 +15,7 @@ const MainRecipes:React.FC = () => {
 						con i nostri piatti.<br/>Colazione, pranzo o cena!<br/> Cerca tutto quello che il tuo corpo richiede!
 					</p>
 				</div>
-				<div className='sm:w-3/5 my-auto mt-8 sm:mt-0'>
+				<div className='sm:w-3/5 my-auto mt-8 sm:mt-0 sm:pl-6'>
 					<img src={first} alt="first photo" className='h-full 2xl:h-[700px] w-full object-cover brightness-100 2xl:brightness-75'/>
 				</div>
 			</div>
