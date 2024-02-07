@@ -1,5 +1,6 @@
 import { getCardsRecipes } from "./recipes"
-import { getRecipeDetails } from "./details"
-import { getSimilarRecipe } from "./similarRecipes"
+import { getRecipeDetails, getSimilarRecipes } from "./details"
+import { toggleResearch } from "./research" 
 
-export { getCardsRecipes, getRecipeDetails, getSimilarRecipe }
+
+export { getCardsRecipes, getRecipeDetails, getSimilarRecipes, toggleResearch }
