@@ -1,6 +1,6 @@
 import  { Home }  from "./home/"
 import { Ingredients } from "./ingredients"
-import { Recipes, Breakfast, Lunch, Dinner } from "./recipes"
+import { Recipes } from "./recipes"
 import { Details } from "./details"
 import { Planner } from "./planner"
 import { Contact } from "./contact"
@@ -9,6 +9,6 @@ import { Footer } from "./footer"
 
 import type { CardType } from "./global"
 
-export { Home, Ingredients, Recipes, Breakfast, Lunch, Dinner, Details, Planner, Contact, About, Footer }
+export { Home, Ingredients, Recipes, Details, Planner, Contact, About, Footer }
 
 export type { CardType }
