@@ -17,7 +17,6 @@ type ingredientType = {
 export const getRecipeDetails= async (key:string, id:number):Promise<DetailsType | null>=> {
     try {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${key}`)
-        console.log(response.data)
         const { title, image, summary:description, diets, servings, instructions, extendedIngredients, analyzedInstructions } = response.data
         // ingredienti 
         let ingredients:RecipeToolType[] = []
