@@ -1,6 +1,13 @@
 import { getCardsRecipes } from "./recipes"
-import { getRecipeDetails, getSimilarRecipes } from "./details"
-import { toggleResearch } from "./research" 
+import { getResearchdata } from "./research"
+import { getCardsIngredients } from "./ingredients"
+import { getRecipeDetails, getSimilarRecipes } from "./details" 
+
+import type { SearchType } from "./research" 
 
 
-export { getCardsRecipes, getRecipeDetails, getSimilarRecipes, toggleResearch }
+export { getCardsRecipes, getResearchdata, getCardsIngredients, getRecipeDetails, getSimilarRecipes }
+export type { SearchType }
+
+
+
