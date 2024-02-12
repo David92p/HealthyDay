@@ -21,16 +21,16 @@ const Recipes:React.FC = () => {
   }, [])
 
   return (
-    <div className='flex flex-col w-full bg-mygreen'>     
+    <div className='flex flex-col w-full bg-mygreen' style={{fontFamily: "Salsa"}}>     
       {
         isError 
         ? <Error/> 
         : (
-          <>
-            <Research type={"una ricetta"} />
+          <div>
+            <Research title={"una ricetta"} type="recipe" />
             { isLoading ? <Loading/> : <Carousel cards={cards} /> }
             <MainRecipes />
-          </>
+          </div>
         )
       }
     </div>
