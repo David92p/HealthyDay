@@ -36,14 +36,14 @@ const Carousel: React.FC<CardsCarousel> = ({ cards }) => {
   };
 
   return (  
-    <div className="w-3/4 m-auto mb-4">
+    <div className="w-3/4 mx-auto mb-6 sm:mb-10">
       <Slider {...settings}>
-          {
-            cards.map((card) => {
-              return <Card {...card} key={card.id}/>
-            })
-          }
-        </Slider>
+        {
+          cards.map((card) => {
+            return <Card {...card} key={card.id}/>
+          })
+        }
+      </Slider>
     </div>
   )
 };

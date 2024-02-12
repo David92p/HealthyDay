@@ -44,10 +44,11 @@ const Details:React.FC = () => {
 		.then((res:DetailsType | null) => {
 			setIsLoading(false)
 			res ? setDetails(res) : setIsError(true)
-			setIsLoading(false)
+
 		})	
 
 		id && getSimilarRecipes(import.meta.env.VITE_APP_API_KEY, +id)
+
     .then((res:CardType[] | null) => {
       res ? setSimilarRecipes(res) : setIsError(true)
 			setIsLoading(false)
@@ -61,6 +62,8 @@ const Details:React.FC = () => {
 		})
 	}
 
+	console.log(details)
+
 	return (
 		<div className='flex flex-col w-full h-auto'>
 			{
@@ -73,7 +76,8 @@ const Details:React.FC = () => {
 							<>
 								<div className='flex flex-col' style={{fontFamily: "Salsa"}}>
 									{/* Foto del piatto, titolo ed etichette assegnate */}
-									<div className='flex flex-col w-full sm:flex-row justify-around border-4 border-red-500 bg-mygreen text-slate-100 p-4'>
+
+									<div className='flex flex-col w-full sm:flex-row justify-around bg-mygreen text-slate-100 p-4'>
 										<img src={details?.image} alt={details?.title} className='sm:w-1/2 2xl:w-1/3'/>
 										<div className='flex flex-col sm:justify-around sm:w-1/2'>
 											<p className='text-mypink text-3xl sm:text-4xl 2xl:text-7xl font-bold tracking-wider text-center pt-2'>
@@ -108,7 +112,9 @@ const Details:React.FC = () => {
 										</div>
 									</div>
 									{/* ingredienti */}
-									<div className='flex flex-col w-full items-center bg-slate-100 px-4'>
+
+									<div className='flex flex-col w-full items-center bg-pink-100 px-4 pb-4'>
+
 										<p className='text-mygreen text-3xl sm:text-5xl 2xl:text-7xl tracking-wider text-center py-4'>Ingredients for {details?.servings} people</p>
 										<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around'>
 												{ details && details.ingredients.map((ingredient:RecipeToolType) => {
@@ -121,7 +127,9 @@ const Details:React.FC = () => {
 									{/* strumenti di lavoro */}
 									{
 										details?.equipments && details?.equipments.length > 0 ? (
-											<div className='flex flex-col w-full items-center bg-slate-100 px-4 pb-4'>
+
+											<div className='flex flex-col w-full items-center bg-pink-100 px-4 pb-4'>
+
 												<p className='text-mygreen text-3xl sm:text-5xl 2xl:text-7xl tracking-wider text-center py-4'>Equipments</p>
 												<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around'>
 														{ details && details.equipments.map((equipment:RecipeToolType) => {
@@ -194,7 +202,8 @@ const Details:React.FC = () => {
 									</div>
 								</div>
 							</>
-						))
+						)
+					)
 			}
 		</div>
 	)
