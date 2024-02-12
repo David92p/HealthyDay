@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { Home, Ingredients, Recipes, Details, Planner, Contact, About, Breakfast, Dinner, Lunch } from "../components/"
+import { Home, Ingredients, Recipes, Details, Planner, Contact, About } from "../components/"
 
 
 
@@ -22,16 +22,12 @@ const Router:React.FC = () => {
       element: <Details />
     },
     {
-      path: "ricettario/colazione",
-      element: <Breakfast/>
+      path: "ricettario/ingredienti",
+      element: <Ingredients/>
     },
     {
-      path: "ricettario/pranzo",
-      element: <Lunch/>
-    },
-    {
-      path: "ricettario/cena",
-      element: <Dinner/>
+      path: "ricettario/pianifica",
+      element: <Planner />
     },
     {
       path: "pianifica",
