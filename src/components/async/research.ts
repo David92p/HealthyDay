@@ -12,16 +12,14 @@ export const getResearchdata = async (key:string, type: "ingredients" | "recipe"
     try {
       if (type == "recipe"){
         const response = await axios(`https://api.spoonacular.com/recipes/autocomplete?apiKey=${key}&number=8&query=${text}`)
-        console.log(response.data)
-        response.data.map((el:SearchType) => {
-          const {id, title} = el
+        response.data.map((recipe:SearchType) => {
+          const {id, title} = recipe
           data.push({id, title})
         })
       } else {
-        const response =  await axios(`https://api.spoonacular.com/food/ingredients/search?apiKey=${key}&query=${text}&number=8`)
-        console.log(response.data.results)
-        response.data.results.map((el: {id: number, name: string}) => {
-          const { id, name} = el
+        const response =  await axios(`https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${key}&number=8&query=${text}`)
+        response.data.map((ingredient: {id: number, name: string}) => {
+          const { id, name} = ingredient
           data.push({id,  title: name})
         })
 
