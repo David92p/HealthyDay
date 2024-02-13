@@ -1,8 +1,9 @@
-import Details from "./Details";
+import RecipeDetails from "./RecipeDetails";
 import ToolLabel from "./ToolLabel";
+import IngredientDetails from "./IngredientDetails";
 
-import type { DetailsType } from "./Details";
+import type { RecipeDetailsType } from "./RecipeDetails";
 import type { RecipeToolType } from "./ToolLabel"; 
 
-export { Details, ToolLabel }
-export type { RecipeToolType, DetailsType }
+export { RecipeDetails, ToolLabel, IngredientDetails }
+export type { RecipeToolType, RecipeDetailsType }
