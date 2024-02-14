@@ -50,8 +50,8 @@ const RecipeDetails:React.FC = () => {
 		id && getSimilarRecipes(import.meta.env.VITE_APP_API_KEY, +id)
 
     .then((res:CardType[] | null) => {
-      res ? setSimilarRecipes(res) : setIsError(true)
 			setIsLoading(false)
+      res ? setSimilarRecipes(res) : setIsError(true)
     })
 	}, [id])
 
