@@ -7,12 +7,12 @@ import React from 'react'
 type LetterScrollerlType = {
 	scrool: number[]
 	setScrool: React.Dispatch<React.SetStateAction<number[]>>
-	//toggleSearch: () => void
+	toggleSearch: (letter: string) => void
 }
 
-const LetterScroller:React.FC<LetterScrollerlType> = ({ scrool, setScrool }) => {
+const LetterScroller:React.FC<LetterScrollerlType> = ({ scrool, setScrool, toggleSearch }) => {
   const letters = [faA, faB, faC, faD, faE, faF, faG, faH, faI, faJ, faK, faL, faM, faN, faO, faP, faQ, faR, faS, faT, faU, faW, faX, faY, faZ]
-
+	const letters2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "w", "x", "y", "z"]
   // const [scrool, setScrool] = useState<number[]>([0, 1, 24])
    
   return (
@@ -32,7 +32,7 @@ const LetterScroller:React.FC<LetterScrollerlType> = ({ scrool, setScrool }) => 
 				<button onClick={() => setScrool(scrool.map(letterNumber => letterNumber == 0 ? 24 : letterNumber -= 1))}  className='bg-mypink text-mygreen w-24 sm:w-40 h-8 sm:h-10 rounded-sm text-2xl sm:text-3xl' >
 					<FontAwesomeIcon icon={faArrowRight} rotation={180} />
         </button>
-				<button className='bg-mypink text-mygreen w-24 sm:w-40 h-8 sm:h-10 rounded-sm text-2xl sm:text-3xl' >
+				<button onClick={() => toggleSearch(letters2[scrool[0]])} className='bg-mypink text-mygreen w-24 sm:w-40 h-8 sm:h-10 rounded-sm text-2xl sm:text-3xl' >
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
 				<button onClick={() => setScrool(scrool.map(letterNumber => letterNumber == 24 ? 0 : letterNumber += 1))} className='bg-mypink text-mygreen w-24 sm:w-40 h-8 sm:h-10 rounded-sm text-2xl sm:text-3xl'>
