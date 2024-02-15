@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getCardsRecipes } from '../async'
-import { Research, Carousel, Loading, Error, CardType } from '../global'
+import { Research, Carousel, Loading, Error, CardType, Redirection } from '../global'
 import { MainRecipes } from '.'
 
 
@@ -30,6 +30,7 @@ const Recipes:React.FC = () => {
             <Research title={"una ricetta"} type="recipe" />
             { isLoading ? <Loading/> : <Carousel cards={cards} /> }
             <MainRecipes />
+            <Redirection type="recipes"/>
           </div>
         )
       }
