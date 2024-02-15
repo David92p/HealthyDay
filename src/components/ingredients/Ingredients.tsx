@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import {  Research, Error, Loading } from '../global'
-import { IngredientIcon, LetterScroller } from '.'
+import {  Research, Error, Loading, Redirection } from '../global'
+import { IngredientIcon, LetterScroller, MainIngredients } from '.'
 import { IngredientType, getIngredients } from '../async' 
 
 const Ingredients:React.FC = () => {
@@ -43,16 +43,20 @@ const Ingredients:React.FC = () => {
         : (
           <div>
             <Research title={"un ingrediente"} type="ingredients" />
+            <MainIngredients />
             <LetterScroller scrool={scrool} setScrool={setScrool} toggleSearch={toggleSearch}/>
-            <div className='flex flex-wrap justify-center gap-4 py-4 border-8 border-red-500'>
-              {
-                isLoading ? <Loading /> : ingredientList?.map((ingredient:IngredientType, index:number) => index < counter ? <IngredientIcon {...ingredient} key={ingredient.id}/> : null)
-              }
+            <div className='bg-pink-100'>
+              <div className='flex flex-wrap justify-center gap-4 py-4'>
+                {
+                  isLoading ? <Loading /> : ingredientList?.map((ingredient:IngredientType, index:number) => index < counter ? <IngredientIcon {...ingredient} key={ingredient.id}/> : null)
+                }
+              </div>
+              <div className='flex justify-around w-full py-4'>
+                <button className='bg-mypink text-mygreen text-lg px-6 py-1' onClick={() => setCounter(10)}>Close</button>
+                { counter < 100 ? <button className='bg-mypink text-mygreen text-lg px-6 py-1' onClick={() => setCounter(prev => prev + 5)}>Other</button> : null}
+              </div>
             </div>
-             <div className='flex justify-around w-full py-4'>
-              <button className='bg-mypink text-mygreen text-lg px-6 py-1' onClick={() => setCounter(10)}>Close</button>
-              { counter < 100 ? <button className='bg-mypink text-mygreen text-lg px-6 py-1' onClick={() => setCounter(prev => prev + 10)}>Other results</button> : null}
-            </div>
+            <Redirection type="ingredients" />
           </div>
         )
       }
