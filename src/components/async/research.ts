@@ -17,9 +17,9 @@ export const getResearchdata = async (key:string, type: "ingredients" | "recipe"
           data.push({id, title})
         })
       } else {
-        const response =  await axios(`https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${key}&number=8&query=${text}`)
-        response.data.map((ingredient: {id: number, name: string}) => {
-          const { id, name} = ingredient
+        const response =  await axios(`https://api.spoonacular.com/food/ingredients/search?apiKey=${key}&number=8&query=${text}`)
+        response.data.results.map((ingredient: {id: number, name: string}) => {
+          const { id, name } = ingredient
           data.push({id,  title: name})
         })
 
