@@ -14,7 +14,7 @@ type ingredientType = {
 	measures: {metric: {amount: number, unitShort: string}}
 }
 
-export const getRecipeDetails= async (key:string, id:number):Promise<DetailsType | null>=> {
+export const getRecipeDetails = async (key:string, id:number):Promise<DetailsType | null>=> {
     try {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${key}`)
         const { title, image, summary:description, diets, servings, instructions, extendedIngredients, analyzedInstructions } = response.data
@@ -79,4 +79,9 @@ export const getSimilarRecipes = async (key:string, id:number) => {
       return null
   }
 }   
+
+export const getIngredientDetails = async (key:string, id:number) => {
+  const response = await axios(`https://api.spoonacular.com/food/ingredients/${id}/information?apiKey=${key}&amount=1`)
+  return response.data
+}
 
