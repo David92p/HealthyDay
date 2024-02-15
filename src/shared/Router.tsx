@@ -18,8 +18,24 @@ const Router:React.FC = () => {
       element: <IngredientDetails />
     },
     {
+      path: "ingredienti/ricettario",
+      element: <Recipes/>
+    },
+    {
+      path: "ingredienti/pianifica",
+      element: <Planner/>
+    },
+    {
       path: "ricettario",
       element: <Recipes/>
+    },
+    {
+      path: "ricettario/ingredienti",
+      element: <Ingredients/>
+    },
+    {
+      path: "ricettario/pianifica",
+      element: <Planner/>
     },
     {
       path: "/ricettario/dettaglio/:id",
@@ -36,6 +52,14 @@ const Router:React.FC = () => {
     {
       path: "pianifica",
       element: <Planner/>
+    },
+    {
+      path: "/pianifica/ricettario",
+      element: <Recipes />
+    },
+    {
+      path: "/pianifica/ingredienti",
+      element: <Ingredients />
     },
     {
       path: "contattaci",
