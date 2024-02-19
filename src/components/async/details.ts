@@ -1,7 +1,8 @@
 import axios from "axios";
-import { DetailsType, RecipeToolType } from "../details";
+import { IngredientDetailsType, RecipeDetailsType, RecipeToolType } from "../details";
 import fotoDefault from "../../assets/global/fotodefault.png"
 import { CardType } from "..";
+import { Nutrition } from "../details/IngredientDetails";
 
 type equipmentStepType = {
     equipment: RecipeToolType[]
@@ -14,10 +15,10 @@ type ingredientType = {
 	measures: {metric: {amount: number, unitShort: string}}
 }
 
-export const getRecipeDetails = async (key:string, id:number):Promise<DetailsType | null>=> {
+export const getRecipeDetails = async (key:string, idRecipe:number):Promise<RecipeDetailsType | null>=> {
     try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${key}`)
-        const { title, image, summary:description, diets, servings, instructions, extendedIngredients, analyzedInstructions } = response.data
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${key}`)
+        const { id, title, image, summary:description, diets, servings, instructions, extendedIngredients, analyzedInstructions } = response.data
         // ingredienti 
         let ingredients:RecipeToolType[] = []
         extendedIngredients.map((ingredient:ingredientType) => {
@@ -48,7 +49,7 @@ export const getRecipeDetails = async (key:string, id:number):Promise<DetailsTyp
         })  : null
 
         return { 
-            id:response.data.id, 
+            id, 
             title, 
             image, 
             description, 
@@ -80,8 +81,36 @@ export const getSimilarRecipes = async (key:string, id:number) => {
   }
 }   
 
-export const getIngredientDetails = async (key:string, id:number) => {
-  const response = await axios(`https://api.spoonacular.com/food/ingredients/${id}/information?apiKey=${key}&amount=1`)
-  return response.data
+export const getIngredientDetails = async (key:string, idRecipe:number):Promise<IngredientDetailsType | null> => {
+  try {
+    const response = await axios(`https://api.spoonacular.com/food/ingredients/${idRecipe}/information?apiKey=${key}&amount=1`)
+    const { id, name, image, consistency, possibleUnits} = response.data
+    const { weightPerServing, caloricBreakdown, flavonoids:flavonoidsData, nutrients:nutrientsData} = response.data.nutrition
+    
+    
+    const portion = { amount: weightPerServing.amount, unit: weightPerServing.unit }
+    const flavonoids = flavonoidsData.filter((flavonoid:{name: string, amount: number, unit: string}) => flavonoid.amount != 0 )
+    const nutrients = nutrientsData.filter((nutrient: {name: string, amount: number, unit: string, percentOfDailyNeeds: number}) => nutrient.amount != 0)
+    const nutrition:Nutrition = {
+      portion, 
+      caloricBreakdown,
+      flavonoids, 
+      nutrients
+    }
+
+    const data = {
+      id, 
+      name: name[0].toUpperCase() + name.slice(1), 
+      image: image ? `https://spoonacular.com/cdn/ingredients_100x100/${image}` : fotoDefault,
+      consistency,
+      possibleUnits, 
+      nutrition
+    } 
+    //console.log("DATA: ", response.data)
+    return data
+  } catch (error) {
+    console.log(error)
+    return null
+  }
 }
 
