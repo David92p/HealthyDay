@@ -11,11 +11,15 @@ type ChartType = {
 
 const Chart:React.FC<ChartType> = ({ percentProtein, percentFat, percentCarbs}) => {
 	const data = {
-		labels: ['Protein', 'Fat', 'Carbs'],
+		labels: ['Protein', 'Fat', "Carbs"],
 		datasets: [
 			{
-				//label: '# of Votes',
-				data: [percentProtein, percentFat, percentCarbs],
+				//label: '%',
+				data: [
+					percentProtein, 
+					percentFat, 
+					percentCarbs 
+				],
 				backgroundColor: [
 					"rgba(216, 54, 54, 1)",
 					"rgba(27, 193, 5, 1)", 
@@ -26,13 +30,21 @@ const Chart:React.FC<ChartType> = ({ percentProtein, percentFat, percentCarbs}) 
 					"rgba(27, 193, 5, 1)", 
 					"rgba(0, 143, 246, 1)"
 				],
-				borderWidth: 2,
+				borderWidth: 1,
+				hoverOffset: 1
 			},
 		],
 	};
 
-	console.log(percentProtein, percentFat, percentCarbs)
-  return <Doughnut data={data} />
+	const options = {
+
+	}
+
+  return (
+		<div className='w-full py-4'>
+			<Doughnut data={data} options={options}/>
+		</div>
+	)
 }
 
 export default Chart
