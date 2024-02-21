@@ -115,7 +115,7 @@ const RecipeDetails:React.FC = () => {
 											<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around'>
 													{ details && details.ingredients.map((ingredient:RecipeToolType) => {
 														return (
-															<ToolLabel {...ingredient} key={ingredient.id}/>
+															<ToolLabel {...ingredient} key={ingredient.id} type="ingredient"/>
 														)
 													}) }
 											</div>
