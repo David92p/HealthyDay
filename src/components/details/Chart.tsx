@@ -14,7 +14,6 @@ const Chart:React.FC<ChartType> = ({ percentProtein, percentFat, percentCarbs}) 
 		labels: ['Protein', 'Fat', "Carbs"],
 		datasets: [
 			{
-				//label: '%',
 				data: [
 					percentProtein, 
 					percentFat, 
@@ -36,13 +35,9 @@ const Chart:React.FC<ChartType> = ({ percentProtein, percentFat, percentCarbs}) 
 		],
 	};
 
-	const options = {
-
-	}
-
   return (
-		<div className='w-full py-4'>
-			<Doughnut data={data} options={options}/>
+		<div className='flex justify-center items-center w-full 2xl:h-[700px] py-4 sm:pl-6'>
+			<Doughnut data={data} />
 		</div>
 	)
 }
