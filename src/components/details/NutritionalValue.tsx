@@ -11,7 +11,7 @@ const NutritionalValue:React.FC<NutritionalValueType> = ({units, portion}) => {
 
 	return (
     <div className='flex flex-col w-full sm:w-1/2 2xl:w-1/3 h-auto bg-pink-100' style={{fontFamily: "Salsa"}}>
-      <p className='text-mygreen font-bold text-center text-3xl sm:text-2xl 2xl:text-3xl tracking-wider py-4 border-b-8 border-mypink mx-2'>Nutrition Facts</p>
+      <p className='text-mygreen font-bold text-center text-3xl sm:text-2xl 2xl:text-3xl tracking-wider py-4 border-b-8 border-mypink mx-2 2xl:pb-7'>Nutrition Facts</p>
       <div className='p-4 text-3xl sm:text-2xl 2xl:text-3xl tracking-wider text-mygreen text-left'>
         Amount per { portion.amount } { portion.unit }
       </div>
@@ -22,9 +22,9 @@ const NutritionalValue:React.FC<NutritionalValueType> = ({units, portion}) => {
         {
           allValues
           ? (
-            units.map((value) => {
+            units.map((value, index) => {
               return (
-                <div className='flex my-2 border-b-4 border-mypink mx-4 pb-2'>
+                <div className='flex my-2 border-b-4 border-mypink mx-4 pb-2' key={index}>
                   <div className='flex justify-center items-center text-center w-3/5 text-xl sm:text-2xl 2xl:text-3xl tracking-wider text-mygreen'>
                     {value.name} <br /> {value.amount} {value.unit}
                   </div>
@@ -37,7 +37,7 @@ const NutritionalValue:React.FC<NutritionalValueType> = ({units, portion}) => {
           ) 
           : (
             units && units.map((value, index) => index < 5 ? (
-              <div className='flex my-2 border-b-4 border-mypink mx-4 pb-2'>
+              <div className='flex my-2 border-b-4 border-mypink mx-4 pb-2' key={index}>
                 <div className='flex justify-center items-center text-center w-3/5 text-xl sm:text-2xl 2xl:text-3xl tracking-wider text-mygreen'>
                   {value.name} <br /> {value.amount} {value.unit}
                 </div>
