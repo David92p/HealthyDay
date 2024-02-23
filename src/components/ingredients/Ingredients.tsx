@@ -11,10 +11,6 @@ const Ingredients:React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [isError, setIsError] = useState<boolean>(false)
   const [scrool, setScrool] = useState([0, 1, 24])
-  //const [initialLetter, setInitialLetter] = useState<string>(letters[scrool[0]])
-
-
-  // letters[Math.floor(Math.random() * letters.length)]
 
   useEffect(() => {
     setIsLoading(true)
