@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { NutritionalValue, Chart } from '.';
 import { Loading, Error } from "../global"
 import { useParams } from 'react-router-dom';
-import { getIngredientDetails } from '../async';
+import { getIngredientDetails, getIngredientSubstitutes } from '../async';
+import second from "../../assets/ingredients/second.jpg"
 
 
 
@@ -11,7 +12,6 @@ export type Nutrition = {
   caloricBreakdown: { percentProtein: number, percentFat: number, percentCarbs: number }
   flavonoids: { name: string, amount: number, unit: string }[]
   nutrients: { name: string, amount: number, unit: string, percentOfDailyNeeds: number }[]
-  //properties: { name: string, amount: number, unit: string}
 }
 
 export type IngredientDetailsType = {
@@ -23,11 +23,18 @@ export type IngredientDetailsType = {
   nutrition: Nutrition
 }
 
+export type SubstituteType = {
+  status: "success" | "failure"
+  message?: string
+  substitutes?: string[]
+}
+
 const IngredientDetails:React.FC = () => {
   
 	const { id } = useParams<{ id: string }>();
 
   const [details, setDetails] = useState<IngredientDetailsType | null>(null)
+  const [substitute, setSubsistute] = useState<SubstituteType | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [isError, setIsError] = useState<boolean>(false)
 
@@ -40,11 +47,13 @@ const IngredientDetails:React.FC = () => {
 			res ? setDetails(res) : setIsError(true)
 		})	
 
-  }, [id])
+    id && getIngredientSubstitutes(import.meta.env.VITE_APP_API_KEY, +id)
+    .then((res: SubstituteType | null) => {
+      setIsLoading(false)
+      res ? setSubsistute(res) : setIsError(true)
+    })
 
-  useEffect(() => {
-    console.log(details)
-  }, [details])
+  }, [id])
 	
   return (
     <div className='flex flex-col w-full h-auto'>
@@ -79,7 +88,7 @@ const IngredientDetails:React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='flex flex-col sm:flex-row-reverse w-full my-4 sm:my-6 2xl:my-10'>
+                  <div className='flex flex-col sm:flex-row-reverse w-full my-4 sm:my-6 2xl:my-14'>
                     <div className='flex flex-col sm:flex-col-reverse justify-end w-full sm:w-1/2 2xl:w-2/3'>
                       {details?.nutrition.caloricBreakdown && <Chart 
                         percentCarbs={details?.nutrition.caloricBreakdown.percentCarbs} 
@@ -87,15 +96,51 @@ const IngredientDetails:React.FC = () => {
                         percentProtein={details?.nutrition.caloricBreakdown.percentProtein}
                       />}
                       <div className='flex flex-col w-full bg-mygreen sm:pl-6'>
-                        <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl m-4 sm:mt-0'>Macronutrients</span>
-                        <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mx-4 mb-4'>
+                        <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0 tracking-wider'>Macronutrients</span>
+                        <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4'>
                           Hi Friend, have you ever heard of macronutrients? <br /> These are food ingredients that must be introduced in large quantities, as they represent the most important energy source for the body.
                           <br/> Carbohydrates, proteins and of course also fats belong to this category!
                         </span>
                       </div>
                     </div>
-                    { details?.nutrition && <NutritionalValue units={details.nutrition.nutrients} portion={details.nutrition.portion}/> }
+                    { details?.nutrition && <NutritionalValue title={"Nutrition Facts"} units={details.nutrition.nutrients} portion={details.nutrition.portion}/> }
                   </div>
+                  {details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? <div className='flex flex-col sm:flex-row my-4 sm:my-6 2xl:my-10'>
+                    <div className='flex flex-col w-full sm:w-1/2 2xl:w-2/3 bg-mygreen sm:pr-6'>
+                      <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0'>Flavonoids</span>
+                      <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4'>
+                        Flavonoids - or bioflavonoids, if you prefer - are natural compounds widely present in the plant world. <br/>
+                        Bioflavonoids are able to exert various biological activities that are very useful for the body. Hence, the importance for health attributed to these compounds. <br/> Among the properties attributed to flavonoids that arouse greatest interest we undoubtedly find the antioxidant action, the protective action on the microcirculation, the estrogen-like and anti-inflammatory action.
+                      </span>
+                    </div>
+                    <NutritionalValue title={"Flavonoids Facts"} units={details.nutrition.flavonoids} portion={details.nutrition.portion}/>
+                  </div> : null}
+                  { substitute?.status == "success" ? <div className='flex flex-col w-full my-4 sm:my-6 2xl:my-14'>
+                    <div className={`flex flex-col-reverse ${details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? "sm:flex-row-reverse" : "sm:flex-row"} bg-mygreen sm:mt-6 2xl:mt-10`}>
+                      <div className={`flex flex-col sm:w-1/2 2xl:w-2/3 sm:gap-6 2xl:gap-10 ${details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? "sm:ml-6" : "sm:mr-6"}`}>
+                        <div className={`flex flex-col`}>
+                          <p className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0 tracking-wider'>Customized ingredients</p>
+                          <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4 '>We care about your nutrition, which is why we offer all our knowledge at your disposal.<br/> We thought that some ingredients may not be to your liking for any reason <br/> Try something different!<br/> Don't forget to contact us if you don't find a worthy replacement for your palate!</span>
+                        </div>
+                        <div className='flex flex-col w-full bg-mygreen sm:pr-6'>
+                          <span className='text-mypink text-2xl sm:text-4xl 2xl:text-6xl my-4 sm:mt-0 tracking-wider'>{substitute?.message} </span>
+                          {
+                            substitute.substitutes && 
+                              substitute?.substitutes.map((substitute, i) => {
+                                return (
+                                  <span key={i} className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4'>{substitute}</span>
+                                )
+                              })
+                            
+                          }
+                        </div>
+                      </div>
+
+                      <div className='sm:w-1/2 2xl:w-1/3 sm:py-10 2xl:py-0'>
+                        <img src={second} alt="first photo" className='h-full w-full object-cover brightness-100 2xl:brightness-75'/>
+                      </div>
+                    </div>
+                  </div> : null}
                 </div>
               </div>
             </>
