@@ -6,7 +6,7 @@ import NutritionalValue from "./NutritionalValue";
 
 import type { RecipeDetailsType } from "./RecipeDetails";
 import type { RecipeToolType } from "./ToolLabel"; 
-import type { IngredientDetailsType } from "./IngredientDetails";
+import type { IngredientDetailsType, Nutrition,  SubstituteType} from "./IngredientDetails";
 
 export { RecipeDetails, ToolLabel, IngredientDetails, Chart, NutritionalValue }
-export type { RecipeToolType, RecipeDetailsType, IngredientDetailsType }
+export type { RecipeToolType, RecipeDetailsType, IngredientDetailsType, Nutrition, SubstituteType }
