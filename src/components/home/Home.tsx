@@ -47,25 +47,28 @@ const Home:React.FC = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer sm:mt-4 2xl:mt-10'
+          onClick={() => navigate("ingredienti")} 
         >
 					<img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home2} />
-					<button className='bg-mypink h-12'>Colazione</button>
+					<button className='bg-mypink h-12'>Ingredients</button>
         </motion.div>
         <motion.div 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer mt-4 2xl:mt-10'
+          onClick={() => navigate("ricettario")} 
         >
 					<img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home3} />
-					<button className='bg-mypink h-12'>Pranzo</button>
+					<button className='bg-mypink h-12'>Recipes</button>
         </motion.div>
         <motion.div 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           className='flex flex-col sm:w-1/3 2xl:h-[550px] 2xl:w-[400px] cursor-pointer my-4 sm:mt-4 sm:mb-0 2xl:mt-10'
+          onClick={() => navigate("pianifica")} 
         >
 					<img className='brightness-75 2xl:brightness-50 2xl:hover:brightness-100 object-cover h-full w-full' src={home4} />
-					<button className='bg-mypink h-12'>Cena</button>
+					<button className='bg-mypink h-12'>Planner</button>
         </motion.div>
       </div>
 			{/* spazio about e collegamenti  */}
@@ -83,7 +86,7 @@ const Home:React.FC = () => {
       {/* Saluti  */}
       <div className='flex justify-center relative h-64 sm:h-80 2xl:h-[400px] w-full'>
         <img src={home5} alt="home1" className='brightness-50 object-cover h-full w-full'/>
-        <h1 className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl font-bold tracking-wider absolute text-center my-14 sm:my-16 mx-4 sm:mx-0'>Ti aspettano pasti<br/>sani e genuini.<br/><br/>A presto!</h1>
+        <h1 className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl font-bold tracking-wider absolute text-center my-14 sm:my-16 mx-4 sm:mx-0'>Ti aspettano pasti<br/>sani e gustosi.<br/><br/>A presto!</h1>
       </div>
     </div> 
   )
