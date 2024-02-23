@@ -1,8 +1,8 @@
 import axios from "axios";
-import { IngredientDetailsType, RecipeDetailsType, RecipeToolType } from "../details";
+import type { IngredientDetailsType, RecipeDetailsType, RecipeToolType, Nutrition, SubstituteType } from "../details";
 import fotoDefault from "../../assets/global/fotodefault.png"
 import { CardType } from "..";
-import { Nutrition } from "../details/IngredientDetails";
+//import { Nutrition, SubstituteType } from "../details/IngredientDetails";
 
 type equipmentStepType = {
     equipment: RecipeToolType[]
@@ -108,6 +108,17 @@ export const getIngredientDetails = async (key:string, idRecipe:number):Promise<
     } 
     //console.log("DATA: ", response.data)
     return data
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+export const getIngredientSubstitutes = async (key:string, id: number):Promise<SubstituteType | null>  => {
+  try {
+    const response = await axios(`https://api.spoonacular.com/food/ingredients/${id}/substitutes?apiKey=${key}`)
+    const data:SubstituteType =  response.data.status == "failure" ? {status: "failure"} : {status: "success", message: response.data.message, substitutes: response.data.substitutes}
+    return data 
   } catch (error) {
     console.log(error)
     return null
