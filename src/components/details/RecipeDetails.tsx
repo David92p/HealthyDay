@@ -93,11 +93,11 @@ const RecipeDetails:React.FC = () => {
 									<div className='w-full h-auto pt-2 px-4 sm:px-6 text-slate-100'>
 										{
 											expandText.description ? (
-												<p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{details && Parser(details.description)}</p>
+												<p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{details && Parser(details.description)}</p>
 											) : (
 												details && details.description.length > 450 
-												? <p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{ details && Parser(details.description.slice(0, 450) + " ... ") }</p>
-												: <p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{ details && Parser(details.description) }</p>
+												? <p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{ details && Parser(details.description.slice(0, 450) + " ... ") }</p>
+												: <p className='text-slate-100 text-center text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{ details && Parser(details.description) }</p>
 											)
 										}
 										<div className='flex w-full justify-end items-center p-2 gap-2 text-mypink tracking-wider cursor-pointer'  onClick={() => toggleExpand("description")}>
@@ -149,7 +149,7 @@ const RecipeDetails:React.FC = () => {
 															<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-4'>Let's begin!</p>
 															<div className='flex flex-col sm:flex-row h-auto w-full'>
 																<div className='w-full sm:w-3/5'>
-																	<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{ Parser(details.instructions) }</p>
+																	<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{ Parser(details.instructions) }</p>
 																	<div className='flex w-full justify-end items-center p-2 sm:pr-6 gap-2 text-mypink tracking-wider cursor-pointer' onClick={() => toggleExpand("instructions")}>
 																		Close <FontAwesomeIcon icon={faCaretDown} rotation={180} className="items-end text-3xl text-slate-100" /> 
 																	</div>
@@ -165,7 +165,7 @@ const RecipeDetails:React.FC = () => {
 															<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-4'>Let's begin!</p>
 															<div className='flex flex-col sm:flex-row h-auto w-full'>
 																<div className='w-full sm:w-3/5'>
-																	<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{ Parser(details.instructions.slice(0, 400) + " ... ") }</p>
+																	<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{ Parser(details.instructions.slice(0, 400) + " ... ") }</p>
 																	<div className='flex w-full justify-end items-center p-2 sm:pr-6 gap-2 text-mypink tracking-wider cursor-pointer' onClick={() => toggleExpand("instructions")}>
 																		Read More <FontAwesomeIcon icon={faCaretDown} className="items-end text-3xl text-slate-100" />
 																	</div>
@@ -182,7 +182,7 @@ const RecipeDetails:React.FC = () => {
 														<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center py-4'>Let's begin!</p>
 														<div className='flex flex-col sm:flex-row h-auto w-full'>
 															<div className='w-full sm:w-3/5'>
-																<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider'>{ Parser(details.instructions) }</p>
+																<p className='text-slate-100 text-center sm:text-left sm:mr-6 text-xl sm:text-2xl 2xl:text-4xl tracking-wider leading-normal'>{ Parser(details.instructions) }</p>
 															</div>
 															<div className='flex items-center w-full sm:w-2/5'>
 																<img src={startPrepare} alt="Let's begin!" className='brightness-75 2xl:brightness-50 object-cover h-full sm:h-[400px] 2xl:full w-full mt-4 sm:mt-0'/>

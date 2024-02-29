@@ -16,8 +16,8 @@ const Home:React.FC = () => {
     <div className='flex flex-col cursor-default' style={{fontFamily: "Salsa"}}>
       {/* introduzione */}
       <div className='flex flex-col sm:flex-row h-auto 2xl:h-[500px] w-full bg-mygreen pt-4 sm:py-16 2xl:py-28 px-4 sm:px-8 2xl:px-10'>
-        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
-        <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-4 mb-4 sm:mt-0 sm:ml-5'>
+        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5 '>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
+        <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-4 mb-4 sm:mt-0 sm:ml-5 leading-normal'>
           Ci siamo appena trasferiti nel quartiere, ma è come se fossimo qui da sempre! Ci avete accolto come vecchi amici, passando con sorrisi pronti e appetito desideroso.
           <br />Ecco perché promettiamo di prenderci cura della tua salute tramite prodotti sani e serviti con sorrisi calorosi.<br /> Siamo una famiglia adesso. Ed è così che cuciniamo per chi amiamo.
           <br />Benvenuto a casa.
@@ -30,7 +30,7 @@ const Home:React.FC = () => {
         </div>
         <div className='flex flex-col sm:w-4/5 2xl:w-2/5 text-mygreen mt-6 sm:mt-0 sm:mr-5'>
           <span className='text-3xl sm:text-5xl 2xl:text-7xl'>Inizia da quì</span>
-          <span className='text-xl sm:text-3xl mt-4'>Lavoriamo tutti insieme per portare sulla tua tavola sapori sani e genuini.<br/>Prova le nostre specilità iniziando da quì.</span>
+          <span className='text-xl sm:text-3xl mt-4 leading-normal'>Lavoriamo tutti insieme per portare sulla tua tavola sapori sani e genuini.<br/>Prova le nostre specilità iniziando da quì.</span>
           <br />
           <ul className='text-xl sm:text-3xl list-disc ml-6'>
             <li className='mb-2'>Sano come vuoi tu</li>
@@ -76,11 +76,11 @@ const Home:React.FC = () => {
         <span className='sm:w-2/5 align-text-top text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5 2xl:mr-10'>Colorati di Genuino</span>
         <div className='sm:w-3/5 flex flex-col text-slate-100 mt-6 sm:mt-0 2xl:mt-4'>
           <span className='text-2xl sm:text-3xl 2xl:text-5xl'>Consulta</span>
-          <span className='text-lg sm:text-2xl sm:mt-4'>Cerca le ricetta che soddisfino il tuo palato!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Cerca le ricetta che soddisfino il tuo palato!</span>
           <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Prepara</span>
-          <span className='text-lg sm:text-2xl sm:mt-4'>Procurati gli ingredienti consigliati e accendi i fornelli, il tuo corpo aspetta di colorarsi di sano!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Procurati gli ingredienti consigliati e accendi i fornelli, il tuo corpo aspetta di colorarsi di sano!</span>
           <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Gusta</span>
-          <span className='text-lg sm:text-2xl sm:mt-4'>Rilassati e gusta il tuo piatto, che sia un break veloce o un pasto principale. Gusta la bontà!</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Rilassati e gusta il tuo piatto, che sia un break veloce o un pasto principale. Gusta la bontà!</span>
         </div>
       </div>
       {/* Saluti  */}

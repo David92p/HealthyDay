@@ -19,7 +19,7 @@ const Footer:React.FC = () => {
             </div>
           </div>
           <div className='w-1/3 flex flex-col justify-start text-center text-mygreen text-xl'>
-            <span className='text-xl sm:text-4xl 2xl:text-6xl text-mygreen'>Indirizzo</span>
+            <span className='text-xl sm:text-4xl 2xl:text-6xl text-mygreen leading-normal'>Indirizzo</span>
             Buongiorno Salute<br/>
             743 Freedom Lane
             Modesto, California<br/>
