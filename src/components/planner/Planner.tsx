@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { Diet, Exclude, FoodPlan, Header, Start, TargetCalories, TimeFrame } from '.'
+import { Redirection } from '../global'
 
 
 
@@ -88,7 +89,8 @@ const Planner:React.FC = () => {
         {sequences.diet && <Diet toggleSequence={toggleSequence}/>} 
         {sequences.exclude && <Exclude toggleSequence={toggleSequence}/>} 
         {sequences.foodPlan && <FoodPlan />} 
-		</div>
+      </div>
+      <Redirection type="planner" />
     </div>
   )
 }
