@@ -1,16 +1,83 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SequenceType } from '.'
 import img from "../../assets/planner/planner4.jpg"
 import { motion } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeftLong, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 type DietInformationType = {
   view: boolean, 
-  diet: string
+  diet: DietType
 }
 
-const Diet:React.FC<SequenceType> = ({ toggleSequence }) => {
+type DietType = {
+	title: string, 
+	explanation: string
+}
 
-	const [dietInformation, setDietInformation] = useState<DietInformationType>({view: false, diet: ""})
+const DIETS:DietType[] = [
+	{
+		title: "Vegetarian",
+		explanation: "No ingredients may contain meat or meat by-products, such as bones or gelatin."
+	},
+	{
+		title: "Gluten-free",
+		explanation: "Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated)."
+	},
+	{
+		title: "Ketogenic", 
+		explanation: "The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not. The formula we use is 55-80% fat content, 15-35% protein content, and under 10% of carbohydrates."
+	},
+	{
+		title: "Lacto-Vegetarian",
+		explanation: "All ingredients must be vegetarian and none of the ingredients can be or contain egg."
+	},	
+	{
+		title: "Ovo-Vegetarian",
+		explanation: "All ingredients must be vegetarian and none of the ingredients can be or contain dairy."
+	},
+	{
+		title: "Vegan",
+		explanation: "No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey."
+	},
+	{
+		title: "Pescetarian",
+		explanation: "Everything is allowed except meat and meat by-products - some pescetarians eat eggs and dairy, some do not."
+	},
+	{
+		title: "Paleo",
+		explanation: "Allowed ingredients include meat (especially grass fed), fish, eggs, vegetables, some oils (e.g. coconut and olive oil), and in smaller quantities, fruit, nuts, and sweet potatoes. We also allow honey and maple syrup (popular in Paleo desserts, but strict Paleo followers may disagree). Ingredients not allowed include legumes (e.g. beans and lentils), grains, dairy, refined sugar, and processed foods."
+	},
+	{
+		title: "Primal",
+		explanation: "Very similar to Paleo, except dairy is allowed - think raw and full fat milk, butter, ghee, etc."
+	},
+	{
+		title: "Low FODMAP",
+		explanation: `FODMAP stands for "fermentable oligo-, di-, mono-saccharides and polyols". Our ontology knows which foods are considered high in these types of carbohydrates (e.g. legumes, wheat, and dairy products)`
+	},
+	{
+		title: "Whole30",
+		explanation: `Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds. Ingredients not allowed include added sweeteners (natural and artificial, except small amounts of fruit juice), dairy (except clarified butter or ghee), alcohol, grains, legumes (except green beans, sugar snap peas, and snow peas), and food additives, such as carrageenan, MSG, and sulfites.`
+	},
+]
+
+
+const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
+
+	const [dietInformation, setDietInformation] = useState<DietInformationType>({view: false, diet: DIETS[0]})
+	
+	const toggleDietInformation = (diet: string) => {
+		updatedPlan && updatedPlan("diet", diet )
+		toggleSequence("exclude")
+	}
+
+	useEffect(() => {
+		console.log(dietInformation.diet.title)
+	}, [dietInformation])
+
+	
+
   return (
 	<div 
 		className={`w-full h-auto relative bg-neutral-800`}
@@ -30,39 +97,102 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence }) => {
 				className='flex justify-center gap-4 2xl:gap-14 items-center h-full mt-4'>
 					{
             dietInformation.view ? (
-              <div className='h-44 border-4 border-red-600'></div>
+              <motion.div 
+								initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 0.5, duration: 1}}
+								className='flex flex-col justify-centerh-auto w-full'>
+								<span className='text-mypink text-bold text-center sm:text-left text-3xl sm:text-5xl 2xl:text-7xl'>{dietInformation.diet.title}?</span>
+								<span className='text-slate-100 text-center sm:text-left w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>{dietInformation.diet.explanation}</span>
+								<div className='flex justify-around mt-4'>
+									<button 
+										onClick={() => setDietInformation((prev) => {
+											return {...prev, view: false}
+										})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-24 h-10 p-auto rounded-md text-2xl text-bold'
+									>
+										<FontAwesomeIcon icon={faArrowLeftLong}/>
+									</button>
+									<button
+										className='bg-mypink mix-blend-lighten text-mygreen w-24 h-10 p-auto rounded-md text-2xl text-bold'
+										onClick={() => toggleDietInformation(dietInformation.diet.title)}
+									>
+										<FontAwesomeIcon icon={faCheck} />
+									</button>
+								</div>
+							</motion.div>
             ) : (
-              <button 
-                onClick={() => setDietInformation({view: true, diet: "dfhierufyheriu"})}
-                className='bg-mypink mix-blend-lighten text-mygreen w-40 h-auto py-4 rounded-md text-2xl text-bold'>
-                Vegetarian
-              </button>
+							<div className='flex flex-col items-center gap-4'>
+								<motion.div 
+								initial={{x:`${document.body.clientWidth < 500 ? 500 : 1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+								className='flex flex-wrap gap-4 w-full justify-around mt-4'>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[0]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Vegetarian
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[1]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Gluten-Free
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[2]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Ketogenic
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[3]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Lacto-Vegetarian 
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[4]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Ovo-Vegetarian
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[5]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Vegan
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[6]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Pescetarian
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[7]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Paleo
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[8]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Primal
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[9]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto rounded-md text-xl text-bold'>
+										Low FODMAP
+									</button>
+									<button 
+										onClick={() => setDietInformation({view: true, diet: DIETS[10]})}
+										className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto px-2 rounded-md text-xl text-bold'>
+										Whole30
+									</button>
+								</motion.div>
+								<motion.button 
+									initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+									onClick={() => toggleDietInformation(10)}
+									className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto px-2 rounded-md text-xl text-bold'>
+									No interest
+								</motion.button>
+							</div>
+							
             )
           }
-				{/* <motion.button 
-					initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
-					
-					className='bg-mypink text-mygreen z-40 w-56 h-20 py-auto rounded-md text-2xl text-bold'>Day</motion.button>
-				<motion.button 
-					initial={{x:`${document.body.clientWidth < 500 ? 500 : 1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
-					
-					className='bg-mypink text-mygreen z-40 w-56 h-20 py-auto rounded-md text-2xl text-bold'>Week</motion.button> */}
 			</div>
 		</div>
 	</div>
-    // <div 
-	// className={`flex flex-col w-screen h-[400px] bg-pink-100 p-4`}
-	// 	>
-	// 		<span className='text-mygreen text-3xl sm:text-5xl 2xl:text-7xl'>Do you have a specific diet?</span>
-	// 		<span className='text-mygreen tracking-wider text-xl leading-relaxed sm:text-3xl my-8'>
-	// 			Start building your health here!<br />
-	// 			Try our nutrition advice planner now.<br />
-	// 			If you are looking for well-being and a healthy taste for your body, you are in the right place!
-	// 		</span>
-	// 		<div className='flex justify-center items-center h-full'>
-	// 			<button onClick={() => toggleSequence("exclude")} className='bg-mypink text-mygreen w-40 h-auto py-4 rounded-md text-2xl text-bold'>Start your plan!</button>
-	// 		</div>
-    // </div>
   )
 }
 
