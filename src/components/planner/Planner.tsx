@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Diet, Exclude, FoodPlan, Header, Start, TargetCalories, TimeFrame } from '.'
 import { Redirection } from '../global'
+import { generateMealPlan } from '../async'
 
 
 
@@ -66,13 +67,10 @@ const Planner:React.FC = () => {
   }
 
   // useEffect(() => {
-  //   console.log(plannerData)
-    // setIsLoading(true)
-    // generateMealPlan(import.meta.env.VITE_APP_API_KEY, "7")
-    // .then((res) => {
-    //   setIsLoading(false)
-    //   res ? console.log(res) : setIsError(true)
-    // })
+  //   generateMealPlan(import.meta.env.VITE_APP_API_KEY, "week", "3000", "vegetarian")
+  //   .then((res) => {
+  //     console.log(res) 
+  //   })
   // }, [plannerData])
 
   useEffect(() => {
