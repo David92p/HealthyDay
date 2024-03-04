@@ -4,8 +4,6 @@ import { Diet, Exclude, FoodPlan, Header, Start, TargetCalories, TimeFrame } fro
 import { Redirection } from '../global'
 import { generateMealPlan } from '../async'
 
-
-
 type SequencesType = {
 	start: boolean,
 	timeFrame: boolean, 
@@ -19,6 +17,13 @@ type Key = "timeFrame" | "targetCalories" | "diet" | "exclude"
 export type SequenceType = {
 	toggleSequence: (nextSequence: "timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan") => void
   updatedPlan?: (key: Key, value: string | number) => void
+}
+
+export type PlanParametersType = {
+  timeFrame: string,
+  targetCalories: string,
+  diet: string,
+  exclude: string,
 }
 
 
@@ -36,11 +41,11 @@ const Planner:React.FC = () => {
     foodPlan: false
 	})
 
-  const [plannerData, setPlannerData] = useState({
-      timeFrame: "day",
-      targetCalories: 4000,
-      diet: "pescetarian",
-      exclude: "olives",
+  const [plannerData, setPlannerData] = useState<PlanParametersType>({
+      timeFrame: "",
+      targetCalories: "",
+      diet: "",
+      exclude: "",
     })
   
   const toggleSequence = (nextSequence:"timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan" ) => {
@@ -57,7 +62,7 @@ const Planner:React.FC = () => {
 	}
 
   
-	const updatedPlan = (key:Key, value: string | number) => {
+	const updatedPlan = (key:Key, value: string | number ) => {
     setPlannerData((prev) => {
       return {
         ...prev,
@@ -67,10 +72,10 @@ const Planner:React.FC = () => {
   }
 
   // useEffect(() => {
-  //   generateMealPlan(import.meta.env.VITE_APP_API_KEY, "week", "3000", "vegetarian")
-  //   .then((res) => {
-  //     console.log(res) 
-  //   })
+    // generateMealPlan(import.meta.env.VITE_APP_API_KEY, "week", "3000", "", "pork, tomato, salmon, pasta")
+    // .then((res) => {
+    //   console.log(res) 
+    // })
   // }, [plannerData])
 
   useEffect(() => {
@@ -84,9 +89,9 @@ const Planner:React.FC = () => {
         {sequences.start && <Start toggleSequence={toggleSequence}/>} 
         {sequences.timeFrame && <TimeFrame toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>}
         {sequences.targetCalories && <TargetCalories toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>}
-        {sequences.diet && <Diet toggleSequence={toggleSequence}/>} 
-        {sequences.exclude && <Exclude toggleSequence={toggleSequence}/>} 
-        {sequences.foodPlan && <FoodPlan />} 
+        {sequences.diet && <Diet toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
+        {sequences.exclude && <Exclude toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
+        {sequences.foodPlan && <FoodPlan parameters={plannerData}/>} 
       </div>
       <Redirection type="planner" />
     </div>
