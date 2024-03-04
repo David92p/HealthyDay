@@ -7,7 +7,7 @@ export type SearchType = {
 }
 
 
-export const getResearchdata = async (key:string, type: "ingredients" | "recipe", text:string):Promise<SearchType[] | null> => {
+export const getResearchdata = async (key:string, type: "ingredients" | "recipe" | "exclude", text:string):Promise<SearchType[] | null> => {
   const data:SearchType[] = []
     try {
       if (type == "recipe"){
