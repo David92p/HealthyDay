@@ -98,7 +98,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 					{
             dietInformation.view ? (
               <motion.div 
-								initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 0.5, duration: 1}}
+								initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1}}
 								className='flex flex-col justify-centerh-auto w-full'>
 								<span className='text-mypink text-bold text-center sm:text-left text-3xl sm:text-5xl 2xl:text-7xl'>{dietInformation.diet.title}?</span>
 								<span className='text-slate-100 text-center sm:text-left w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>{dietInformation.diet.explanation}</span>
@@ -122,7 +122,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
             ) : (
 							<div className='flex flex-col items-center gap-4'>
 								<motion.div 
-								initial={{x:`${document.body.clientWidth < 500 ? 500 : 1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+								initial={{x:`${document.body.clientWidth < 500 ? 500 : 1600}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
 								className='flex flex-wrap gap-4 w-full justify-around mt-4'>
 									<button 
 										onClick={() => setDietInformation({view: true, diet: DIETS[0]})}
@@ -182,7 +182,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 								</motion.div>
 								<motion.button 
 									initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
-									onClick={() => toggleDietInformation(10)}
+									onClick={() => toggleDietInformation("")}
 									className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto px-2 rounded-md text-xl text-bold'>
 									No interest
 								</motion.button>
