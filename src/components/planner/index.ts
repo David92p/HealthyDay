@@ -7,8 +7,8 @@ import Diet from "./Diet";
 import Exclude from "./Exclude";
 import FoodPlan from "./FoodPlan";
 
-import { SequenceType } from "./Planner";
+import type { SequenceType, PlanParametersType } from "./Planner";
 
 
 export { Planner, Header, Start, TimeFrame, TargetCalories, Diet, Exclude, FoodPlan }
-export type { SequenceType }
+export type { SequenceType, PlanParametersType }
