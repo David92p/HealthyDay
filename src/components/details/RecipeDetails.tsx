@@ -193,7 +193,7 @@ const RecipeDetails:React.FC = () => {
 											)
 										: null
 									}
-									<div className='flex flex-col w-full pt-4 sm:pt-6 px-4 bg-mygreen'>
+									<div className={`flex flex-col mx-auto  ${similarRecipes?.length == 1 ? "w-full sm:w-1/2" : "w-full"} pt-4 sm:pt-6 px-4 bg-mygreen`}>
 										<p className='text-mypink text-2xl sm:text-4xl 2xl:text-5xl tracking-wider text-center mb-4'>Do you want something similar?<br/> Take a look at these dishes!</p>
 										{ similarRecipes &&  <Carousel cards={similarRecipes} /> }
 									</div>
