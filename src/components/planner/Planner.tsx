@@ -1,8 +1,7 @@
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Diet, Exclude, FoodPlan, Header, Start, TargetCalories, TimeFrame } from '.'
 import { Redirection } from '../global'
-import { generateMealPlan } from '../async'
 
 type SequencesType = {
 	start: boolean,
@@ -70,17 +69,6 @@ const Planner:React.FC = () => {
       }
     })
   }
-
-  // useEffect(() => {
-    // generateMealPlan(import.meta.env.VITE_APP_API_KEY, "week", "3000", "", "pork, tomato, salmon, pasta")
-    // .then((res) => {
-    //   console.log(res) 
-    // })
-  // }, [plannerData])
-
-  useEffect(() => {
-    console.log(plannerData)
-  }, [plannerData])
 
   return (
     <div className='flex flex-col' style={{fontFamily: "Salsa"}}>
