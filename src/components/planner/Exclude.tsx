@@ -28,19 +28,19 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 		ingredientsListExcluded.includes(ingredientToExclude) ? setError(true) : setError(false)
 	}, [ingredientToExclude, ingredientsListExcluded])
 
-	useEffect(() => {
-		console.log(ingredientsListExcluded)
-	}, [ingredientsListExcluded])
-
   return (
 	<div 
 		className={`w-full h-auto relative bg-neutral-800`}
 	>
 		<img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light"/>
 		<div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
-			<span className='text-mypink mix-blend-lighten text-bold text-3xl sm:text-5xl 2xl:text-7xl'>Do you have some ingredients to exclude?</span>
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+				className='text-mypink mix-blend-lighten text-bold text-3xl sm:text-5xl 2xl:text-7xl'>
+					Do you have some ingredients to exclude?
+			</motion.span>
+			<motion.span 
+				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
 				Our mission is to find dishes<br/>  tailor-made for you! <br/> Some ingredients may not be suitable for your eating habits<br/>  or simply do not satisfy your palate.
 			</motion.span>
@@ -109,7 +109,7 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 				) : null
 			}
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? 500 : 1700}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+				initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed mt-4 sm:my-14'>
 				Search and enter the ingredients to exclude up to a maximum of 5 ingredients or continue without specifying any ingredients.
 			</motion.span>

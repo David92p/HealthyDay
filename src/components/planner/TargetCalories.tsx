@@ -27,7 +27,7 @@ const TargetCalories:React.FC<SequenceType> = ({toggleSequence, updatedPlan}) =>
 		<div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
 			<span className='text-mypink mix-blend-lighten text-bold text-3xl sm:text-5xl 2xl:text-7xl'>And how many calories?</span>
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
 					Calories are a unit of measurement.<br/>They are usually used to calculate, and therefore measure, the energy content of foods and drinks.<br/>
 					Proteins and carbohydrates each provide about 4 calories per gram, while fats provide 9 calories per gram.
@@ -44,20 +44,20 @@ const TargetCalories:React.FC<SequenceType> = ({toggleSequence, updatedPlan}) =>
 				<div className='flex gap-6 sm:gap-20'>
 					<motion.button 
 						onClick={() => toggleTargetCalories(calories)}
-						initial={{x:`${document.body.clientWidth < 500 ? -500 : -1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+						initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-20 py-auto rounded-md text-2xl text-bold'>
 							Set my<br/> calories
 					</motion.button>
 					<motion.button 
 						onClick={() => toggleTargetCalories("2000")}
-						initial={{x:`${document.body.clientWidth < 500 ? 500 : 1500}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+						initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-20 py-auto rounded-md text-2xl text-bold'>
 							Set default<br/> calories
 					</motion.button>
 				</div>
 			</div>
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? 500 : 1700}`}} animate={{x:0}} transition={{delay: 1, duration: 1.5}}
+				initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed mt-8 sm:my-14'>
 					The recommended caloric intake depends on various factors, although on average the requirement is between 2000-2500 calories (kcal) per day for men and 1800-2000 for women.<br/> 
 					It may vary from individual to individual and should customized based on your lifestyle.<br /> 
