@@ -16,7 +16,7 @@ const Home:React.FC = () => {
     <div className='flex flex-col cursor-default' style={{fontFamily: "Salsa"}}>
       {/* introduzione */}
       <div className='flex flex-col sm:flex-row h-auto 2xl:h-[500px] w-full bg-mygreen pt-4 sm:py-16 2xl:py-28 px-4 sm:px-8 2xl:px-10'>
-        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5 '>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
+        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
         <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-4 mb-4 sm:mt-0 sm:ml-5 leading-normal'>
           Ci siamo appena trasferiti nel quartiere, ma è come se fossimo qui da sempre! Ci avete accolto come vecchi amici, passando con sorrisi pronti e appetito desideroso.
           <br />Ecco perché promettiamo di prenderci cura della tua salute tramite prodotti sani e serviti con sorrisi calorosi.<br /> Siamo una famiglia adesso. Ed è così che cuciniamo per chi amiamo.
