@@ -28,9 +28,6 @@ export type PlanParametersType = {
 
 const Planner:React.FC = () => {
 
-  // const [isLoading, setIsLoading] = useState<boolean>(true)
-	// const [isError, setIsError] = useState<boolean>(false)
-
 	const [sequences, setSequence] = useState<SequencesType>({
 		start: true,
 		timeFrame: false, 
@@ -47,7 +44,7 @@ const Planner:React.FC = () => {
       exclude: "",
     })
   
-  const toggleSequence = (nextSequence:"timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan" ) => {
+  const toggleSequence = (nextSequence: "start" | "timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan" ) => {
 		const newSequence:SequencesType =	{
 			start: false,
 			timeFrame: false, 
@@ -79,7 +76,7 @@ const Planner:React.FC = () => {
         {sequences.targetCalories && <TargetCalories toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>}
         {sequences.diet && <Diet toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
         {sequences.exclude && <Exclude toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
-        {sequences.foodPlan && <FoodPlan parameters={plannerData}/>} 
+        {sequences.foodPlan && <FoodPlan parameters={plannerData} toggleSequence={toggleSequence}/>} 
       </div>
       <Redirection type="planner" />
     </div>
