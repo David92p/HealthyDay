@@ -45,13 +45,13 @@ const TargetCalories:React.FC<SequenceType> = ({toggleSequence, updatedPlan}) =>
 					<motion.button 
 						onClick={() => toggleTargetCalories(calories)}
 						initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
-						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-20 py-auto rounded-md text-2xl text-bold'>
+						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-auto py-2 rounded-md text-2xl text-bold'>
 							Set my<br/> calories
 					</motion.button>
 					<motion.button 
 						onClick={() => toggleTargetCalories("2000")}
 						initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
-						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-20 py-auto rounded-md text-2xl text-bold'>
+						className='bg-mypink text-mygreen z-40 w-32 sm:w-44 h-auto py-2 rounded-md text-2xl text-bold'>
 							Set default<br/> calories
 					</motion.button>
 				</div>
