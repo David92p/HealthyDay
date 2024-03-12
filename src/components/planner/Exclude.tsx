@@ -83,7 +83,7 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 							</div>
 						</div>
 						)
-					) : <Research title={"un ingrediente"} type={"exclude"} setIngredientToExclude={setIngredientToExclude}/>
+					) : <Research title={"Search ingredient"} type={"exclude"} setIngredientToExclude={setIngredientToExclude}/>
 					
 				)
 			}
