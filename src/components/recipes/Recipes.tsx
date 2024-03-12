@@ -27,7 +27,7 @@ const Recipes:React.FC = () => {
         ? <Error/> 
         : (
           <div>
-            <Research title={"una ricetta"} type="recipe" />
+            <Research title={"Search recipe"} type="recipe" />
             { isLoading ? <Loading/> : <Carousel cards={cards} /> }
             <MainRecipes />
             <Redirection type="recipes"/>
