@@ -11,7 +11,7 @@ const Redirection:React.FC<RedirectionType> = ({ type }) => {
     <div>
       <div className='flex flex-col bg-mygreen'>
 				<span className='text-center text-mypink text-3xl sm:text-5xl 2xl:text-7xl mx-auto mt-4'>
-					Other sections dedicated for you
+					Other sections dedicated<br/>for you
 				</span>
 				<div className='flex justify-around 2xl:justify-center 2xl:gap-40 items-center w-full h-24 sm:h-36 2xl:h-44'>
 					{
