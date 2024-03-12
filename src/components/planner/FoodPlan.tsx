@@ -60,8 +60,13 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
         <span className='text-mypink text-bold text-3xl sm:text-5xl 2xl:text-7xl'>
           { parameters.timeFrame == "day" ? "Daily nutrition plan!" : "Weekly nutrition plan!"}
         </span>
+				<span className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
+          It is all ready!<br/>
+          Here are three main dishes that you can distribute between breakfast, lunch and dinner.<br/>
+          We have tried to offer you the best recipes according to your eating habits and getting as close as possible to the daily calories you require!
+				</span>
         {planning && planning.length > 1  && (
-					<div className='flex justify-around 2xl:justify-center 2xl:gap-24 items-center py-4'>
+					<div className='flex justify-around 2xl:justify-center 2xl:gap-24 items-center mb-4 sm:mb-10'>
 						<button
 							onClick={() => toggleCounter("-")}
 							className='bg-mypink mix-blend-lighten text-mygreen px-6 py-1 rounded-md text-2xl text-bold'
@@ -90,15 +95,16 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
         }
         {
           planning && <Chart 
+            type={"grams"}
             percentCarbs={planning[counterDays].nutrients.carbohydrates} 
-            percentFat={planning[counterDays].nutrients.fat} 
-            percentProtein={planning[counterDays].nutrients.protein}
+            percentFats={planning[counterDays].nutrients.fat} 
+            percentProteins={planning[counterDays].nutrients.protein}
           />
         }
-        <div className='flex justify-center items-center h-full'>
+        <div className='flex justify-center items-center h-full mt-8'>
           <button 
             onClick={() => toggleSequence("start")}
-            className='bg-mypink mix-blend-lighten text-mygreen z-40 w-56 h-20 py-auto rounded-md text-2xl text-bold'>Restart!</button>
+            className='bg-mypink mix-blend-lighten text-mygreen z-40 w-44 h-14 py-auto rounded-md text-2xl text-bold'>Restart!</button>
         </div>
       </div>
     </div>

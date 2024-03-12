@@ -16,11 +16,11 @@ const Home:React.FC = () => {
     <div className='flex flex-col cursor-default' style={{fontFamily: "Salsa"}}>
       {/* introduzione */}
       <div className='flex flex-col sm:flex-row h-auto 2xl:h-[500px] w-full bg-mygreen pt-4 sm:py-16 2xl:py-28 px-4 sm:px-8 2xl:px-10'>
-        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Ciao! <br /> Siamo su <br />Buongiorno Salute</span>
+        <span className='align-text-top sm:w-1/3 text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5'>Hi!<br/>We're up<br/>Healthy day</span>
         <span className='sm:w-2/3 text-slate-100 tracking-wider text-xl sm:text-3xl mt-4 mb-4 sm:mt-0 sm:ml-5 leading-normal'>
-          Ci siamo appena trasferiti nel quartiere, ma è come se fossimo qui da sempre! Ci avete accolto come vecchi amici, passando con sorrisi pronti e appetito desideroso.
-          <br />Ecco perché promettiamo di prenderci cura della tua salute tramite prodotti sani e serviti con sorrisi calorosi.<br /> Siamo una famiglia adesso. Ed è così che cuciniamo per chi amiamo.
-          <br />Benvenuto a casa.
+        We just moved into the neighborhood, but it's like we've been here forever! You welcomed us like old friends, passing by with ready smiles and eager appetites.
+        <br />That's why we promise to take care of your health through healthy products and served with warm smiles.<br /> We are a family now. And this is how we cook for those we love.
+        <br />Welcome home.
         </span>
       </div>
       {/* spazio main con ricette link */}
@@ -29,16 +29,16 @@ const Home:React.FC = () => {
           <img src={home1} alt="home2" className='brightness-75 2xl:brightness-50 object-cover h-full 2xl:h-[700px] w-full'/>
         </div>
         <div className='flex flex-col sm:w-4/5 2xl:w-2/5 text-mygreen mt-6 sm:mt-0 sm:mr-5'>
-          <span className='text-3xl sm:text-5xl 2xl:text-7xl'>Inizia da quì</span>
-          <span className='text-xl sm:text-3xl mt-4 leading-normal'>Lavoriamo tutti insieme per portare sulla tua tavola sapori sani e genuini.<br/>Prova le nostre specilità iniziando da quì.</span>
+          <span className='text-3xl sm:text-5xl 2xl:text-7xl'>Start from here</span>
+          <span className='text-xl sm:text-3xl mt-4 leading-normal'>We all work together to bring healthy and genuine flavors to your table.<br/>Try our specialties starting here.</span>
           <br />
           <ul className='text-xl sm:text-3xl list-disc ml-6'>
-            <li className='mb-2'>Sano come vuoi tu</li>
-            <li className='mb-2'>Vitamine per la mente e il corpo</li>
-            <li className='mb-2'>Proteine di qualità.</li>
-            <li>Scegli il tuo sapore</li>
+            <li className='mb-2'>Healthy as you want</li>
+            <li className='mb-2'>Vitamins for mind and body</li>
+            <li className='mb-2'>Quality proteins</li>
+            <li>Choose your flavor</li>
           </ul>
-          <button onClick={() => navigate("ricettario")} className='bg-mypink text-mygreen w-36 sm:w-40 h-8 sm:h-10 rounded-sm mx-auto my-6 text-xl sm:text-3xl' >Inizia</button>
+          <button onClick={() => navigate("ricettario")} className='bg-mypink text-mygreen w-36 sm:w-40 h-8 sm:h-10 rounded-sm mx-auto my-6 text-xl sm:text-3xl' >Star</button>
         </div>
       </div>
 			{/* spazio pasti 3 card  */}
@@ -73,20 +73,20 @@ const Home:React.FC = () => {
       </div>
 			{/* spazio about e collegamenti  */}
       <div className='flex flex-col sm:flex-row h-auto 2xl:h-[550px] w-full bg-mygreen py-8 sm:py-14 2xl:py-auto px-4 sm:px-6 2xl:px-10'>
-        <span className='sm:w-2/5 align-text-top text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5 2xl:mr-10'>Colorati di Genuino</span>
+        <span className='sm:w-2/5 align-text-top text-mypink text-3xl sm:text-5xl 2xl:text-7xl sm:mr-5 2xl:mr-10'>Healthy and Genuine</span>
         <div className='sm:w-3/5 flex flex-col text-slate-100 mt-6 sm:mt-0 2xl:mt-4'>
-          <span className='text-2xl sm:text-3xl 2xl:text-5xl'>Consulta</span>
-          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Cerca le ricetta che soddisfino il tuo palato!</span>
-          <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Prepara</span>
-          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Procurati gli ingredienti consigliati e accendi i fornelli, il tuo corpo aspetta di colorarsi di sano!</span>
-          <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Gusta</span>
-          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Rilassati e gusta il tuo piatto, che sia un break veloce o un pasto principale. Gusta la bontà!</span>
+          <span className='text-2xl sm:text-3xl 2xl:text-5xl'>Consult</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Search for the recipe that satisfies your palate!</span>
+          <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Prepare</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Get the recommended ingredients and turn on the stove, your body is waiting for a healthy glow!</span>
+          <span className='text-2xl sm:text-3xl 2xl:text-5xl mt-5'>Enjoy</span>
+          <span className='text-lg sm:text-2xl sm:mt-4 leading-normal'>Relax and enjoy your dish, whether it's a quick break or a main meal. Enjoy the goodness!</span>
         </div>
       </div>
       {/* Saluti  */}
       <div className='flex justify-center relative h-64 sm:h-80 2xl:h-[400px] w-full'>
         <img src={home5} alt="home1" className='brightness-50 object-cover h-full w-full'/>
-        <h1 className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl font-bold tracking-wider absolute text-center my-14 sm:my-16 mx-4 sm:mx-0'>Ti aspettano pasti<br/>sani e gustosi.<br/><br/>A presto!</h1>
+        <h1 className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl font-bold tracking-wider absolute text-center my-14 sm:my-16 mx-4 sm:mx-0'>Healthy and tasty meals<br/>await you.<br/><br/>See you soon!</h1>
       </div>
     </div> 
   )

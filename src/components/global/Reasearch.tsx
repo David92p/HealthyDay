@@ -6,7 +6,7 @@ import { Loading } from '.'
 import { useNavigate } from 'react-router-dom'
 
 type ResearchType = {
-  title: "un ingrediente" | "una ricetta"
+  title: "Search ingredient" | "Search recipe"
   type: "ingredients" | "recipe" | "exclude"
   setIngredientToExclude?: React.Dispatch<React.SetStateAction<string>>
 }
@@ -40,9 +40,9 @@ const Research:React.FC<ResearchType> = ({ title, type, setIngredientToExclude }
 
   return (
     <div className={`flex flex-col ${type == "exclude" ? "h-[200px]" : "h-[200px]"} gap-4 cursor-default`} style={{fontFamily: "Salsa"}}>
-      <label className='text-3xl sm:text-4xl tracking-wider text-center text-mypink mt-4'>Cerca {title}</label>
+      <label className='text-3xl sm:text-4xl tracking-wider text-center text-mypink mt-4'>{title}</label>
       <div className='flex justify-center items-center w-full h-1/3 relative'>
-        <input ref={input} onChange={toggleResearch} type="text"placeholder={`Pasta pomodoro ...`} maxLength={30} className={`h-10 w-[90%] sm:w-full 2xl:w-3/4 bg-slate-100 text-mygreen text-3xl px-2 placeholder:text-xl py-2 mx-auto sm:mx-4 rounded-md`}/>
+        <input ref={input} onChange={toggleResearch} type="text" placeholder={type == "recipe" ? "Spaghetti sauce ..." :  "Tomato ..."} maxLength={30} className={`h-10 w-[90%] sm:w-full 2xl:w-3/4 bg-slate-100 text-mygreen text-3xl px-2 placeholder:text-xl py-2 mx-auto sm:mx-4 rounded-md`}/>
         {
           isLoading 
           ? (
