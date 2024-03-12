@@ -91,9 +91,10 @@ const IngredientDetails:React.FC = () => {
                   <div className='flex flex-col sm:flex-row-reverse w-full my-4 sm:my-6 2xl:my-14'>
                     <div className='flex flex-col sm:flex-col-reverse justify-end w-full sm:w-1/2 2xl:w-2/3'>
                       {details?.nutrition.caloricBreakdown && <Chart 
+                        type = {"percentage"}
                         percentCarbs={details?.nutrition.caloricBreakdown.percentCarbs} 
-                        percentFat={details?.nutrition.caloricBreakdown.percentFat} 
-                        percentProtein={details?.nutrition.caloricBreakdown.percentProtein}
+                        percentFats={details?.nutrition.caloricBreakdown.percentFat} 
+                        percentProteins={details?.nutrition.caloricBreakdown.percentProtein}
                       />}
                       <div className='flex flex-col w-full bg-mygreen sm:pl-6'>
                         <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0 tracking-wider'>Macronutrients</span>
