@@ -38,7 +38,7 @@ const Ingredients:React.FC = () => {
         ? <Error />
         : (
           <div>
-            <Research title={"un ingrediente"} type="ingredients" />
+            <Research title={"Search ingredient"} type="ingredients" />
             <MainIngredients />
             <LetterScroller scrool={scrool} setScrool={setScrool} toggleSearch={toggleSearch}/>
             <div className='bg-pink-100'>
