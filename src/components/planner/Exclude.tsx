@@ -97,6 +97,11 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 								ingredientsListExcluded.map((ingredint:string, i ) => {
 									return (
 										<div 
+											onClick={() => {
+												setIngredientsListExcluded((prev:string[]) => {
+													return prev.filter((el) => el != ingredint)
+												})
+											}}
 											key={i}
 											className='flex justify-center items-center bg-mypink mix-blend-lighten text-mygreen w-full sm:w-1/2 2xl:w-1/3 h-10 py-auto px-1 rounded-md text-xl text-bold'>
 											{ingredint}
