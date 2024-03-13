@@ -53,11 +53,13 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
   ? setCounterDays((prev:number) => prev == days.length - 1 ? 0 : prev += 1) 
   : setCounterDays((prev:number) => prev == 0 ? days.length - 1 : prev -= 1) 
 
+  console.log(planning)
+
   return (
     <div className={`w-full h-auto relative bg-neutral-800`}>
       <img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light rotate-180"/>
       <div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
-        <span className='text-mypink text-bold text-3xl sm:text-5xl 2xl:text-7xl'>
+        <span className='text-mypink text-bold text-3xl sm:text-5xl 2xl:text-7xl tracking-wider'>
           { parameters.timeFrame == "day" ? "Daily nutrition plan!" : "Weekly nutrition plan!"}
         </span>
 				<span className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
@@ -93,18 +95,38 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
               : planning && <Carousel cards={planning[counterDays].meals}/>
             )
         }
-        {
-          planning && <Chart 
-            type={"grams"}
-            percentCarbs={planning[counterDays].nutrients.carbohydrates} 
-            percentFats={planning[counterDays].nutrients.fat} 
-            percentProteins={planning[counterDays].nutrients.protein}
-          />
-        }
+        <div className='flex flex-col 2xl:flex-row'>
+          <div className='flex flex-col 2xl:w-1/2 '>
+            <span className='text-slate-100 tracking-wider text-xl sm:text-3xl leading-relaxed mt-4 sm:my-10'>
+              This table will help you analyze the daily nutritional values you will take.<br/>
+              The values are calculated based on the recipe data provided.<br/>
+              Any changes you make to the suggested recipe will change the values provided here.<br/>
+              We have tried to provide you with a plan that is as close as possible to the nutritional needs you need.<br/>
+              We recommend that you always follow a healthy and balanced diet suited to your needs and consult a nutritionist.<br/>
+              Remember, don't forget the importance of taste and health.
+            </span>
+            <div className='flex flex-col justify-center items-center gap-4 my-8'>
+              <span className='text-mypink text-bold text-4xl sm:text-5xl 2xl:text-7xl'>Total calories</span>
+              <span className='text-slate-100 tracking-wider text-2xl sm:text-3xl leading-relaxed '>{planning && `${planning[counterDays].nutrients.calories} kcal`}</span>
+            </div>
+          </div>
+          <div className='2xl:w-1/2'>
+            {
+              planning && <Chart 
+                type={"grams"}
+                percentCarbs={planning[counterDays].nutrients.carbohydrates} 
+                percentFats={planning[counterDays].nutrients.fat} 
+                percentProteins={planning[counterDays].nutrients.protein}
+              />
+            }
+          </div>
+        </div>
         <div className='flex justify-center items-center h-full mt-8'>
           <button 
             onClick={() => toggleSequence("start")}
-            className='bg-mypink mix-blend-lighten text-mygreen z-40 w-44 h-14 py-auto rounded-md text-2xl text-bold'>Restart!</button>
+            className='bg-mypink mix-blend-lighten text-mygreen z-40 w-44 h-14 py-auto rounded-md text-2xl text-bold'>
+              Restart!
+          </button>
         </div>
       </div>
     </div>
