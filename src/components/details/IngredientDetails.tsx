@@ -5,7 +5,10 @@ import { useParams } from 'react-router-dom';
 import { getIngredientDetails, getIngredientSubstitutes } from '../async';
 import second from "../../assets/ingredients/second.jpg"
 
-
+export type AllValuesType = {
+  nutritionFacts: boolean
+  flavonoidsFacts: boolean
+}
 
 export type Nutrition = {
   portion: { amount: number, unit: string }
@@ -35,8 +38,15 @@ const IngredientDetails:React.FC = () => {
 
   const [details, setDetails] = useState<IngredientDetailsType | null>(null)
   const [substitute, setSubsistute] = useState<SubstituteType | null>(null)
+  const [allValues, setAllValues] = useState<AllValuesType>({nutritionFacts: false, flavonoidsFacts: false})
   const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [isError, setIsError] = useState<boolean>(false)
+
+  const toggleAllValues = (titleLabel: "nutritionFacts" | "flavonoidsFacts")  => {
+    setAllValues((prev: AllValuesType) => {
+      return titleLabel ? {...prev, [titleLabel]: !prev[titleLabel]} : {nutritionFacts: false, flavonoidsFacts: false}
+    })
+  }
 
   useEffect(() => {
     setIsLoading(true)
@@ -61,16 +71,19 @@ const IngredientDetails:React.FC = () => {
         isError 
         ? <Error /> 
         : isLoading 
-          ? <Loading /> 
+          ? <Loading />
           : (
-            <>
-              <div className='flex flex-col bg-mygreen' style={{fontFamily: "Salsa"}}>
+            <div 
+              className={`flex flex-col w-full bg-mygreen ${allValues.nutritionFacts || allValues.flavonoidsFacts ? "bg-opacity-30" : "opacity-100"}`} 
+              style={{fontFamily: "Salsa"}}
+              onClick={() => allValues.nutritionFacts || allValues.flavonoidsFacts ? setAllValues({nutritionFacts: false, flavonoidsFacts: false}) : null}
+              >
                 <div className='flex flex-col w-full items-center p-4 sm:p-6 2xl:p-10'>
                   <div className='flex flex-col sm:flex-row w-full'>
-                    <div className='w-full sm:w-1/2 2xl:w-1/3 sm:h-[300px] 2xl:h-[400px]'>
+                    <div className={`w-full sm:w-1/2 2xl:w-1/3 sm:h-[300px] 2xl:h-[400px] ${allValues.nutritionFacts || allValues.flavonoidsFacts  ? "opacity-10" : "opacity-100"}`}>
                       <img src={details?.image} alt={details?.name} className="object-contain h-56 sm:h-full w-96 sm:w-full" />
                     </div>
-                    <div className='2xl:w-2/3 justify-center sm:ml-8'>
+                    <div className={`2xl:w-2/3 justify-center sm:ml-8 ${allValues.nutritionFacts || allValues.flavonoidsFacts  ? "opacity-10" : "opacity-100"}`}>
                       <p className='text-mypink text-5xl sm:text-6xl 2xl:text-7xl font-bold tracking-wider text-center mt-4'>{details?.name}</p>
                       <div className='flex flex-col justify-center items-center gap-3 my-4'>
                         <div className='text-mypink font-bold tracking-wider text-2xl sm:text-3xl'>Ingredient consistency</div>
@@ -88,35 +101,35 @@ const IngredientDetails:React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='flex flex-col sm:flex-row-reverse w-full my-4 sm:my-6 2xl:my-14'>
-                    <div className='flex flex-col sm:flex-col-reverse justify-end w-full sm:w-1/2 2xl:w-2/3'>
+                  <div className={`flex flex-col sm:flex-row-reverse w-full my-4 sm:my-6 2xl:my-14 ${allValues.flavonoidsFacts ? "opacity-10" : "opacity-100"}`}>
+                    <div className={`flex flex-col sm:flex-col-reverse justify-end w-full sm:w-1/2 2xl:w-2/3 relative ${allValues.nutritionFacts || allValues.flavonoidsFacts  ? "opacity-10" : "opacity-100"}`}>
                       {details?.nutrition.caloricBreakdown && <Chart 
                         type = {"percentage"}
                         percentCarbs={details?.nutrition.caloricBreakdown.percentCarbs} 
                         percentFats={details?.nutrition.caloricBreakdown.percentFat} 
                         percentProteins={details?.nutrition.caloricBreakdown.percentProtein}
                       />}
-                      <div className='flex flex-col w-full bg-mygreen sm:pl-6'>
-                        <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0 tracking-wider'>Macronutrients</span>
-                        <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4 leading-normal'>
+                      <div className='flex flex-col w-full bg-mygreen mt-4 sm:mt-0'>
+                        <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0 sm:pl-2 tracking-wider'>Macronutrients</span>
+                        <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4 sm:pl-4  leading-normal'>
                           Hi Friend, have you ever heard of macronutrients? <br /> These are food ingredients that must be introduced in large quantities, as they represent the most important energy source for the body.
                           <br/> Carbohydrates, proteins and of course also fats belong to this category!
                         </span>
                       </div>
                     </div>
-                    { details?.nutrition && <NutritionalValue title={"Nutrition Facts"} units={details.nutrition.nutrients} portion={details.nutrition.portion}/> }
+                    { details?.nutrition && <NutritionalValue title={"Nutrition Facts"} units={details.nutrition.nutrients} portion={details.nutrition.portion} allValues={allValues.nutritionFacts} name="nutritionFacts" showAllValues={toggleAllValues} /> }
                   </div>
-                  {details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? <div className='flex flex-col sm:flex-row my-4 sm:my-6 2xl:my-10'>
-                    <div className='flex flex-col w-full sm:w-1/2 2xl:w-2/3 bg-mygreen sm:pr-6'>
+                  {details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? <div className={`flex flex-col sm:flex-row my-4 sm:my-6 2xl:my-10 ${allValues.nutritionFacts ? "opacity-10" : "opacity-100"}`}>
+                    <div className={`flex flex-col w-full sm:w-1/2 2xl:w-2/3 bg-mygreen sm:pr-6 ${allValues.nutritionFacts || allValues.flavonoidsFacts  ? "opacity-10" : "opacity-100"}`}>
                       <span className='text-mypink text-3xl sm:text-5xl 2xl:text-7xl my-4 sm:mt-0'>Flavonoids</span>
                       <span className='text-slate-100 tracking-wider text-xl sm:text-3xl mb-4 leading-normal'>
                         Flavonoids - or bioflavonoids, if you prefer - are natural compounds widely present in the plant world. <br/>
                         Bioflavonoids are able to exert various biological activities that are very useful for the body. Hence, the importance for health attributed to these compounds. <br/> Among the properties attributed to flavonoids that arouse greatest interest we undoubtedly find the antioxidant action, the protective action on the microcirculation, the estrogen-like and anti-inflammatory action.
                       </span>
                     </div>
-                    <NutritionalValue title={"Flavonoids Facts"} units={details.nutrition.flavonoids} portion={details.nutrition.portion}/>
+                    <NutritionalValue title={"Flavonoids Facts"} units={details.nutrition.flavonoids} portion={details.nutrition.portion} allValues={allValues.flavonoidsFacts} name='flavonoidsFacts' showAllValues={toggleAllValues} />
                   </div> : null}
-                  { substitute?.status == "success" ? <div className='flex flex-col w-full my-4 sm:my-6 2xl:my-14'>
+                  { substitute?.status == "success" ? <div className={`flex flex-col w-full my-4 sm:my-6 2xl:my-14 ${allValues.nutritionFacts || allValues.flavonoidsFacts  ? "opacity-10" : "opacity-100"}`}>
                     <div className={`flex flex-col-reverse ${details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? "sm:flex-row-reverse" : "sm:flex-row"} bg-mygreen sm:mt-6 2xl:mt-10`}>
                       <div className={`flex flex-col sm:w-1/2 2xl:w-2/3 sm:gap-6 2xl:gap-10 ${details?.nutrition.flavonoids && details?.nutrition.flavonoids.length > 0 ? "sm:ml-6" : "sm:mr-6"}`}>
                         <div className={`flex flex-col`}>
@@ -142,8 +155,7 @@ const IngredientDetails:React.FC = () => {
                     </div>
                   </div> : null}
                 </div>
-              </div>
-            </>
+            </div>
           )
       }
     </div>
