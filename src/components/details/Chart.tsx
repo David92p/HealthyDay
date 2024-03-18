@@ -93,7 +93,7 @@ const Chart:React.FC<ChartType> = ({ type, percentProteins, percentFats, percent
 					values && (
 						<>
 							<span className='text-mypink text-2xl sm:text-3xl 2xl:text-6xl font-bold tracking-wider mt-4 2xl:mt-6'>{values.label}</span>
-							<span className='text-mypink text-3xl sm:text-4xl 2xl:text-6xl font-bold tracking-wider '>
+							<span className='text-mypink text-3xl 2xl:text-6xl font-bold tracking-wider '>
 								{values.value} {type == "percentage" ? "%" : "g"}
 							</span>
 						</>
