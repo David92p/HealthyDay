@@ -1,12 +1,13 @@
 import { BrowserRouter } from "react-router-dom"
 import { Navbar, Router } from "./shared"
-import { Footer } from "./components"
+import { Footer, ScrollToTop } from "./components"
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar/>
         <Router />
         <Footer />
