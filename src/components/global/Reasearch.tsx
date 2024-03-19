@@ -53,7 +53,7 @@ const Research:React.FC<ResearchType> = ({ title, type, setIngredientToExclude }
           : (
             input.current?.value && searchList 
             ? (
-              <div className='flex flex-col w-full 2xl:w-3/4 px-10 sm:px-6 2xl:px-2 pb-2 absolute top-full z-20 tracking-wider bg-mygreen text-slate-100 bg-opacity-75'>
+              <div className={`flex flex-col w-[90%] 2xl:w-3/4 px-4 sm:px-6 2xl:px-2 absolute top-full z-20 tracking-wider bg-mygreen text-slate-100 bg-opacity-75`}>
                 { 
                   searchList.map(el => {
                     return (
