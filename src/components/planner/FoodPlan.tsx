@@ -4,7 +4,7 @@ import { Chart } from "../details"
 import type { PlanParametersType } from '.'
 import { generateMealPlan } from '../async'
 
-import img from "../../assets/planner/planner-6.jpg"
+import img from "../../assets/planner/planner6.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGreaterThan } from '@fortawesome/free-solid-svg-icons'
 
@@ -57,7 +57,7 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
 
   return (
     <div className={`w-full h-auto relative bg-neutral-800`}>
-      <img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light rotate-180"/>
+      <img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light"/>
       <div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
         <span className='text-mypink text-bold text-3xl sm:text-5xl 2xl:text-7xl tracking-wider'>
           { parameters.timeFrame == "day" ? "Daily nutrition plan!" : "Weekly nutrition plan!"}
