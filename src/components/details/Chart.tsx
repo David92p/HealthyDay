@@ -75,8 +75,6 @@ const Chart:React.FC<ChartType> = ({ type, percentProteins, percentFats, percent
 	const toggleDoughnut = (e:MouseEvent<HTMLCanvasElement, globalThis.MouseEvent>) => {
 		if (chartRef.current && getElementsAtEvent(chartRef.current, e).length > 0 ) {
 			const dataPoint = getElementsAtEvent(chartRef.current, e)[0].index
-			console.log(dataPoint)
-			
 			setValues({label: dataPoint == 0 ? "Proteins" : (dataPoint == 1 ? "Fats" : "Carbs"), value: data.datasets[0].data[dataPoint]})
 		}
 	}
