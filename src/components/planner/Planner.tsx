@@ -12,10 +12,23 @@ type SequencesType = {
   foodPlan: boolean
 }
 
-type Key = "timeFrame" | "targetCalories" | "diet" | "exclude" 
+type Key = "timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan"
 export type SequenceType = {
-	toggleSequence: (nextSequence: "timeFrame" | "targetCalories" | "diet" | "exclude" | "foodPlan") => void
+	toggleSequence: (nextSequence: Key ) => void
   updatedPlan?: (key: Key, value: string | number) => void
+  container?: {
+		hidden: { opacity: number }, 
+		show: {
+			opacity: number, 
+			transition: {
+				delayChildren: number
+			}
+		}
+	}
+  item?: {
+		hidden: { opacity: number },
+		show: { opacity: number }
+	}
 }
 
 export type PlanParametersType = {
@@ -27,6 +40,22 @@ export type PlanParametersType = {
 
 
 const Planner:React.FC = () => {
+
+  const container = {
+		hidden: { opacity: 0 }, 
+		show: {
+			opacity: 1, 
+			transition: {
+				delayChildren: 0.5
+			}
+		}
+	}
+
+	const item = {
+		hidden: { opacity: 0 },
+		show: { opacity: 1 }
+	}
+
 
 	const [sequences, setSequence] = useState<SequencesType>({
 		start: true,
@@ -72,10 +101,10 @@ const Planner:React.FC = () => {
       <Header/>
       <div className='flex items-center cursor-grab activer:cursor-grabbing bg-mygreen'>
         {sequences.start && <Start toggleSequence={toggleSequence}/>} 
-        {sequences.timeFrame && <TimeFrame toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>}
-        {sequences.targetCalories && <TargetCalories toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>}
-        {sequences.diet && <Diet toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
-        {sequences.exclude && <Exclude toggleSequence={toggleSequence} updatedPlan={updatedPlan}/>} 
+        {sequences.timeFrame && <TimeFrame toggleSequence={toggleSequence} updatedPlan={updatedPlan} container={container} item={item}/>}
+        {sequences.targetCalories && <TargetCalories toggleSequence={toggleSequence} updatedPlan={updatedPlan} container={container} item={item}/>}
+        {sequences.diet && <Diet toggleSequence={toggleSequence} updatedPlan={updatedPlan} container={container} item={item}/>} 
+        {sequences.exclude && <Exclude toggleSequence={toggleSequence} updatedPlan={updatedPlan} container={container} item={item}/>} 
         {sequences.foodPlan && <FoodPlan parameters={plannerData} toggleSequence={toggleSequence}/>} 
       </div>
       <Redirection type="planner" />
