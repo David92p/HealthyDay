@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 type RedirectionType = {
-	type: "ingredients" | "recipes" | "planner"
+	type: "ingredients" | "recipes" | "planner" | "about"
 }
 
 const Redirection:React.FC<RedirectionType> = ({ type }) => {
@@ -17,24 +17,33 @@ const Redirection:React.FC<RedirectionType> = ({ type }) => {
 					{
 						type == "ingredients" && (
 							<>
-								<button className='bg-mypink h-10 sm:w-40 px-2' onClick={() => navigate("/ingredienti/ricettario")}>Recipes</button>
-								<button className='bg-mypink h-10 sm:w-40 px-4' onClick={() => navigate("/ricettario/pianifica")}>Planner</button>
+								<button className='bg-mypink h-10 sm:w-40 px-2 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/ingredienti/ricettario")}>Recipes</button>
+								<button className='bg-mypink h-10 sm:w-40 px-4 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/ricettario/pianifica")}>Planner</button>
 							</>
 						)
 					}
 					{
 						type == "recipes" && (
 							<>
-								<button className='bg-mypink h-10 sm:w-40 px-2' onClick={() => navigate("/ricettario/ingredienti")}>Ingredients</button>
-								<button className='bg-mypink h-10 sm:w-40 px-4' onClick={() => navigate("/ricettario/pianifica")}>Planner</button>
+								<button className='bg-mypink h-10 sm:w-40 px-2 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/ricettario/ingredienti")}>Ingredients</button>
+								<button className='bg-mypink h-10 sm:w-40 px-4 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/ricettario/pianifica")}>Planner</button>
 							</>
 						)
 					}
 					{
 						type == "planner" && (
 							<>
-								<button className='bg-mypink h-10 sm:w-40 px-2' onClick={() => navigate("/pianifica/ingredienti")}>Ingredients</button>
-								<button className='bg-mypink h-10 sm:w-40 px-4' onClick={() => navigate("/pianifica/ricettario")}>Recipes</button>
+								<button className='bg-mypink h-10 sm:w-40 px-2 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/pianifica/ingredienti")}>Ingredients</button>
+								<button className='bg-mypink h-10 sm:w-40 px-4 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/pianifica/ricettario")}>Recipes</button>
+							</>
+						)
+					}
+					{
+						type == "about" && (
+							<>
+								<button className='bg-mypink h-10 sm:w-40 px-2 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/pianifica/ingredienti")}>Ingredients</button>
+								<button className='bg-mypink h-10 sm:w-40 px-4 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/pianifica/ricettario")}>Recipes</button>
+								<button className='bg-mypink h-10 sm:w-40 px-4 sm:text-xl 2xl:text-xl 2xl:hover:text-2xl' onClick={() => navigate("/ricettario/pianifica")}>Planner</button>
 							</>
 						)
 					}
