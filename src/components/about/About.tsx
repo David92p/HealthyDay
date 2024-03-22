@@ -19,8 +19,8 @@ const About:React.FC = () => {
         {/* buttons collegamenti */}
         <Redirection type={"about"} />
         {/* Footer */}
-        <div className='w-full sm:h-[400px]  bg-mygreen text-slate-100 text-center p-4 sm:p-10 2xl:p-24 text-lg sm:text-2xl tracking-wider'>
-            On behalf of Healthy Day I would like to thank the data service provided by Spoonacular.<br/> 
+        <div className='w-full sm:h-[400px] bg-mygreen text-slate-100 text-center p-4 sm:p-10 2xl:p-24 text-lg sm:text-2xl tracking-wider'>
+            On behalf of Healthy Day I would like to thank the data service provided by <a className='text-mypink 2xl:hover:font-semibold transition-all' href='https://spoonacular.com/food-api' target='_blank'>Spoonacular</a>.<br/> 
             This web app was created for educational purposes only in order to enhance my development knowledge.<br/>
             If you think you want to make some changes or improvements please contact me via the form and visit my GitHub profile in the contacts.<br/>
             For any collaboration I remain available, a healthy greeting from Healty Day!
