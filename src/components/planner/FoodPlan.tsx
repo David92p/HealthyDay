@@ -53,8 +53,6 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
   ? setCounterDays((prev:number) => prev == days.length - 1 ? 0 : prev += 1) 
   : setCounterDays((prev:number) => prev == 0 ? days.length - 1 : prev -= 1) 
 
-  console.log(planning)
-
   return (
     <div className={`w-full h-auto relative bg-neutral-800`}>
       <img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light"/>

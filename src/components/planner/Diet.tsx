@@ -63,7 +63,7 @@ const DIETS:DietType[] = [
 ]
 
 
-const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
+const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan, container, item }) => {
 
 	const [dietInformation, setDietInformation] = useState<DietInformationType>({view: false, diet: DIETS[0]})
 	
@@ -77,10 +77,10 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 		className={`w-full h-auto relative bg-neutral-800`}
 	>
 		<img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light rotate-180"/>
-		<div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
+		<motion.div variants={container} initial="hidden" animate="show" className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
 			<span className='text-mypink text-bold text-3xl sm:text-5xl 2xl:text-7xl'>Do you have a specific diet?</span>
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+				variants={item}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
 					There are various diets tested and implemented by leading nutritionists, even if sometimes these are decisions made solely by our will.<br/>
 					With respect for letting you choose your eating habits, <br/> 
@@ -92,7 +92,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 					{
             dietInformation.view ? (
               <motion.div 
-								initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+								variants={item}
 								className='flex flex-col justify-centerh-auto w-full'>
 								<span className='text-mypink text-bold text-center sm:text-left text-3xl sm:text-5xl 2xl:text-7xl'>{dietInformation.diet.title[0].toUpperCase() + dietInformation.diet.title.substring(1)}?</span>
 								<span className='text-slate-100 text-center sm:text-left w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>{dietInformation.diet.explanation}</span>
@@ -116,7 +116,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
             ) : (
 							<div className='flex flex-col items-center gap-4'>
 								<motion.div 
-								initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+								variants={item}
 								className='flex flex-wrap gap-4 w-full justify-around mt-4'>
 									<button 
 										onClick={() => setDietInformation({view: true, diet: DIETS[0]})}
@@ -175,7 +175,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 									</button>
 								</motion.div>
 								<motion.button 
-									initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+									variants={item}
 									onClick={() => toggleDietInformation("")}
 									className='bg-mypink mix-blend-lighten text-mygreen w-28 h-16 py-auto px-2 rounded-md text-xl text-bold'>
 									No interest
@@ -185,7 +185,7 @@ const Diet:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
             )
           }
 			</div>
-		</div>
+		</motion.div>
 	</div>
   )
 }

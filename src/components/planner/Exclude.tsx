@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeftLong, faCheck } from "@fortawesome/free-solid-svg-icons"
 
 
-const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
+const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan, container, item }) => {
 
 	const [ingredientsListExcluded, setIngredientsListExcluded] = useState<string[]>([])
 	const [ingredientToExclude, setIngredientToExclude] = useState<string>("")
@@ -33,14 +33,14 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 		className={`w-full h-auto relative bg-neutral-800`}
 	>
 		<img src={img} alt="img" className="h-full w-full object-fill absolute mix-blend-soft-light"/>
-		<div className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
+		<motion.div variants={container} initial="hidden" animate="show" className="flex flex-col px-4 sm:px-8 2xl:px-10 py-6">
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+				variants={item}
 				className='text-mypink mix-blend-lighten text-bold text-3xl sm:text-5xl 2xl:text-7xl'>
 					Do you have some ingredients to exclude?
 			</motion.span>
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? -500 : -2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+				variants={item}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed my-4 sm:my-10'>
 				Our mission is to find dishes<br/>  tailor-made for you! <br/> Some ingredients may not be suitable for your eating habits<br/>  or simply do not satisfy your palate.
 			</motion.span>
@@ -114,7 +114,7 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 				) : null
 			}
 			<motion.span 
-				initial={{x:`${document.body.clientWidth < 500 ? 500 : 2000}`}} animate={{x:0}} transition={{delay: 0.1, duration: 1.5}}
+				variants={item}
 				className='text-slate-100 w-[90%] tracking-wider text-xl sm:text-3xl leading-relaxed mt-4 sm:my-14'>
 				Search and enter the ingredients to exclude up to a maximum of 5 ingredients or continue without specifying any ingredients.
 			</motion.span>
@@ -125,7 +125,7 @@ const Exclude:React.FC<SequenceType> = ({ toggleSequence, updatedPlan }) => {
 						Generate Meal Plan!
 				</button>
 			</div>	
-		</div>
+		</motion.div>
 	</div>
   )
 }
