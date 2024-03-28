@@ -60,12 +60,3 @@ export const getMealPlan = async (timeFrame: string, targetCalories: string, die
       }
 }
 
-
-
-// const getDailyPlan = (meals:MealType[]) => {
-//   const mealsData = meals.map((meal:MealType) => {
-//     const { id, title } = meal
-//     return {id, title, image: `https://spoonacular.com/recipeImages/${meal.id}-556x370.jpg`}
-//   })
-//   return mealsData
-// }
