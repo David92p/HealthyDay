@@ -23,7 +23,7 @@ const Research:React.FC<ResearchType> = ({ title, type, setIngredientToExclude }
   const toggleResearch = () => {
     if (input.current?.value){
       setIsLoading(true)
-      getResearchdata(import.meta.env.VITE_APP_API_KEY, type, input.current?.value)
+      getResearchdata(type, input.current?.value)
       .then((res:SearchType[] | null ) => {
         res ? setSearchList(res) : setSearchList(null)
         setIsLoading(false)

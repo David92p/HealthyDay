@@ -51,13 +51,13 @@ const IngredientDetails:React.FC = () => {
   useEffect(() => {
     setIsLoading(true)
 		
-		id && getIngredientDetails(import.meta.env.VITE_APP_API_KEY, +id)
+		id && getIngredientDetails(+id)
     .then((res: IngredientDetailsType | null) => {
 			setIsLoading(false)
 			res ? setDetails(res) : setIsError(true)
 		})	
 
-    id && getIngredientSubstitutes(import.meta.env.VITE_APP_API_KEY, +id)
+    id && getIngredientSubstitutes(+id)
     .then((res: SubstituteType | null) => {
       setIsLoading(false)
       res ? setSubsistute(res) : setIsError(true)

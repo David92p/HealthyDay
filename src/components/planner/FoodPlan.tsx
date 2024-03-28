@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Carousel, Error, Loading } from '../global'
 import { Chart } from "../details"
 import type { PlanParametersType } from '.'
-import { generateMealPlan } from '../async'
+import { getMealPlan } from '../async'
 
 import img from "../../assets/planner/planner6.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -42,7 +42,7 @@ const FoodPlan:React.FC<FoodPlanType> = ({parameters, toggleSequence}) => {
   useEffect(() => {
     setIsLoading(true)
     const {timeFrame, targetCalories, diet, exclude} = parameters
-    generateMealPlan(import.meta.env.VITE_APP_API_KEY, timeFrame, targetCalories, diet, exclude)
+    getMealPlan(timeFrame, targetCalories, diet, exclude)
     .then((planner:DailyPlanType[] | null) => {
       setIsLoading(false)
       planner ? setPlanning(planner) : setIsError(true)

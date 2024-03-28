@@ -12,7 +12,7 @@ const Recipes:React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getCardsRecipes(import.meta.env.VITE_APP_API_KEY, 9)
+    getCardsRecipes(9)
     .then((res:CardType[] | null) => {
       res ? setCards(res) : setIsError(true)
       setIsLoading(false)

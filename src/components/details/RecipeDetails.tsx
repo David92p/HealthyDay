@@ -39,15 +39,13 @@ const RecipeDetails:React.FC = () => {
 	
   useEffect(() => {
 		setIsLoading(true)
-		
-		id && getRecipeDetails(import.meta.env.VITE_APP_API_KEY, +id)
+		id && getRecipeDetails(+id)
 		.then((res:RecipeDetailsType | null) => {
 			setIsLoading(false)
 			res ? setDetails(res) : setIsError(true)
-
 		})	
 
-		id && getSimilarRecipes(import.meta.env.VITE_APP_API_KEY, +id)
+		id && getSimilarRecipes(+id)
     .then((res:CardType[] | null) => {
 			setIsLoading(false)
       res ? setSimilarRecipes(res) : setIsError(true)
@@ -125,7 +123,6 @@ const RecipeDetails:React.FC = () => {
 											details?.equipments && details?.equipments.length > 0 ? (
 
 												<div className='flex flex-col w-full items-center px-4 pb-4'>
-
 													<p className='text-mygreen text-3xl sm:text-5xl 2xl:text-7xl tracking-wider text-center py-4'>Equipments</p>
 													<div className='flex w-full sm:w-10/12 gap-4 flex-wrap justify-around'>
 															{ details && details.equipments.map((equipment:RecipeToolType) => {

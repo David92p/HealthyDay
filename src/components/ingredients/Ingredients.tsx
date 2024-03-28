@@ -5,7 +5,6 @@ import { IngredientType, getIngredients } from '../async'
 
 const Ingredients:React.FC = () => {
   
-
   const [ingredientList, setIngredientList] = useState<IngredientType[] | null>(null)
   const [counter, setCounter] = useState<number>(10)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -14,7 +13,7 @@ const Ingredients:React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getIngredients(import.meta.env.VITE_APP_API_KEY, "a")
+    getIngredients("a")
     .then((res: IngredientType[] | null) => {
       setIsLoading(false)
       res ? setIngredientList(res) : setIsError(true)
@@ -24,7 +23,7 @@ const Ingredients:React.FC = () => {
   const toggleSearch = (letter:string) => {
     setIsLoading(true)
     setCounter(10)
-    getIngredients(import.meta.env.VITE_APP_API_KEY, letter)
+    getIngredients(letter)
     .then((res: IngredientType[] | null) => {
       setIsLoading(false)
       res ? setIngredientList(res) : setIsError(true)
