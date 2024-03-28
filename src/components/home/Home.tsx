@@ -38,7 +38,7 @@ const Home:React.FC = () => {
             <li className='mb-2'>Quality proteins</li>
             <li>Choose your flavor</li>
           </ul>
-          <button onClick={() => navigate("ricettario")} className='bg-mypink text-mygreen w-36 sm:w-40 h-8 sm:h-10 rounded-sm mx-auto my-6 text-xl sm:text-3xl' >Star</button>
+          <button onClick={() => navigate("ricettario")} className='bg-mypink text-mygreen w-36 sm:w-40 h-8 sm:h-10 rounded-sm mx-auto my-6 text-xl sm:text-3xl' >Start</button>
         </div>
       </div>
 			{/* spazio pasti 3 card  */}
