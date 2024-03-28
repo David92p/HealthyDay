@@ -13,7 +13,6 @@ type LetterScrollerlType = {
 const LetterScroller:React.FC<LetterScrollerlType> = ({ scrool, setScrool, toggleSearch }) => {
   const icons = [faA, faB, faC, faD, faE, faF, faG, faH, faI, faJ, faK, faL, faM, faN, faO, faP, faQ, faR, faS, faT, faU, faW, faX, faY, faZ]
 	const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "w", "x", "y", "z"]
-  // const [scrool, setScrool] = useState<number[]>([0, 1, 24])
    
   return (
 		<>
